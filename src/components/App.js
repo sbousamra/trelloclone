@@ -33,7 +33,6 @@ class ToDoApp extends React.Component {
 
   handleEnter(e) {
     if (e.charCode === 13) {
-      console.log("yes")
       this.handleAppend()
       this.handleClearInput(e)
     }
