@@ -1,34 +1,40 @@
 import React from 'react';
-import TodoList from './TodoList';
-import TodoForm from './TodoForm';
+import TitleBar from './titleBar'
+import BoardList from './boardList';
+import BoardName from './boardName';
+import CreateBoard from './createBoard';
 
 class ToDoApp extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      todoform: "",
-    	todos: []
+      boardname: "",
+    	boards: [],
+      createboardstate: <button className="askfornewboardbutton" onClick={this.updateCreateBoardState.bind(this)}>Create new board...</button>
+
     }
     this.handleInput = this.handleInput.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
     this.handleAppend = this.handleAppend.bind(this)
     this.handleEnter = this.handleEnter.bind(this)
-
   }
 
   handleInput(e) {
-    this.setState({todoform: e.target.value})
+    this.setState({boardname: e.target.value})
   }
 
   handleDelete(e, index) {
-      this.state.todos.splice(index, 1)
-      this.setState({todos: this.state.todos})
+      this.state.boards.splice(index, 1)
+      this.setState({boards: this.state.boards})
   }
 
   handleAppend() {
-    const updatedList = this.state.todos.concat([this.state.todoform])
-    this.setState({todos: updatedList})
+    const updatedList = this.state.boards.concat([this.state.boardname])
+    this.setState({
+      boards: updatedList,
+      createboardstate: <button className="askfornewboardbutton" onClick={this.updateCreateBoardState.bind(this)}>Create new board...</button>
+    })
   }
 
   handleEnter(e) {
@@ -42,12 +48,17 @@ class ToDoApp extends React.Component {
     e.target.value = ""
   }
 
+  updateCreateBoardState() {
+    this.setState({createboardstate: <BoardName handleInput={this.handleInput} handleAppend={this.handleAppend} handleEnter={this.handleEnter}/>})
+  }
+
   render() {
     return (
       <div>
-      	<div><h1> Todo App </h1></div>
-      	<TodoForm handleInput={this.handleInput} handleAppend={this.handleAppend} handleEnter={this.handleEnter} handleClearInput={this.handleClearInput}/>
-      	<TodoList todos={this.state.todos} handleDelete={this.handleDelete}/>
+        <TitleBar/>
+        <CreateBoard createBoardState={this.state.createboardstate}/>
+        <BoardList boards={this.state.boards} handleDelete={this.handleDelete}/>
+        <br/><br/>
       </div>
     )
   }

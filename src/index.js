@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToDoApp from './components/App';
+import ToDoApp from './components/app';
 
 ReactDOM.render(
   <ToDoApp />,
