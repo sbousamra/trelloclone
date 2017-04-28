@@ -10,6 +10,7 @@ class BoardName extends React.Component {
           <input className="boardinput" placeholder="  Like 'Bucket List' for example..." onChange={this.props.handleInput} onKeyPress={this.props.handleEnter}/>
           <br/>
           <h4 className="boardteamheader">Team</h4>
+          <br/>
           <p className="boardteamp">Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams. 
             <a className="boardcreateteamlink" href="www.google.com"> Create a team. </a>
           </p>

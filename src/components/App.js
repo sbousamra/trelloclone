@@ -56,9 +56,10 @@ class ToDoApp extends React.Component {
     return (
       <div>
         <TitleBar/>
-        <CreateBoard createBoardState={this.state.createboardstate}/>
-        <BoardList boards={this.state.boards} handleDelete={this.handleDelete}/>
-        <br/><br/>
+        <div className="body">
+          <CreateBoard createBoardState={this.state.createboardstate}/>
+          <BoardList boards={this.state.boards} handleDelete={this.handleDelete}/>
+        </div>
       </div>
     )
   }

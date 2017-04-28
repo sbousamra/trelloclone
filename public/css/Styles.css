@@ -4,6 +4,10 @@ body {
   color: white;
 }
 
+.body {
+	margin: 50px 0px;
+}
+
 .titlebar {
 	background-color: #026AA7;
 }
@@ -34,7 +38,7 @@ body {
 	background-color: white;
   margin: 15px 95px; 
   height: 300px;
-  width: 300px;
+  width: 310px;
   border-style: ridge;
   padding: 7px;
   font: Helvetica;
@@ -65,10 +69,11 @@ body {
 
 .boardteamheader {
 	font: Helvetica;
+	margin: 10px 0px;
 }
 
 .boardteamp {
-	margin: -15px 0px;
+	margin: -17px 0px;
 	font: Helvetica;
 }
 
