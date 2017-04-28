@@ -54,26 +54,26 @@ class ToDoApp extends React.Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col">
+      <div className="container">
+        <div className="row">
+          <div className="col">
             1 of 3
           </div>
-          <div class="col-6">
+          <div className="col-6">
             2 of 3 (wider)
           </div>
-          <div class="col">
+          <div className="col">
             3 of 3
           </div>
         </div>
-        <div class="row">
-          <div class="col">
+        <div className="row">
+          <div className="col">
             1 of 3
           </div>
-          <div class="col-5">
+          <div className="col-5">
             2 of 3 (wider)
           </div>
-          <div class="col">
+          <div className="col">
             3 of 3
           </div>
         </div>
