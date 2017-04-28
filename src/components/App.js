@@ -11,7 +11,7 @@ class ToDoApp extends React.Component {
     this.state = {
       boardname: "",
     	boards: [],
-      createboardstate: <button className="askfornewboardbutton" onClick={this.updateCreateBoardState.bind(this)}>Create new board...</button>
+      createboardstate: <button onClick={this.updateCreateBoardState.bind(this)}>Create new board...</button>
 
     }
     this.handleInput = this.handleInput.bind(this)
@@ -33,7 +33,7 @@ class ToDoApp extends React.Component {
     const updatedList = this.state.boards.concat([this.state.boardname])
     this.setState({
       boards: updatedList,
-      createboardstate: <button className="askfornewboardbutton" onClick={this.updateCreateBoardState.bind(this)}>Create new board...</button>
+      createboardstate: <button onClick={this.updateCreateBoardState.bind(this)}>Create new board...</button>
     })
   }
 
@@ -54,11 +54,28 @@ class ToDoApp extends React.Component {
 
   render() {
     return (
-      <div>
-        <TitleBar/>
-        <div className="body">
-          <CreateBoard createBoardState={this.state.createboardstate}/>
-          <BoardList boards={this.state.boards} handleDelete={this.handleDelete}/>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            1 of 3
+          </div>
+          <div class="col-6">
+            2 of 3 (wider)
+          </div>
+          <div class="col">
+            3 of 3
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            1 of 3
+          </div>
+          <div class="col-5">
+            2 of 3 (wider)
+          </div>
+          <div class="col">
+            3 of 3
+          </div>
         </div>
       </div>
     )
