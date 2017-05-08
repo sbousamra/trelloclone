@@ -1,0 +1,16 @@
+/* button styling */
+
+.btn-board {
+	height: 150px;
+}
+
+/* titlebar styling */
+
+.titlebar-spacing {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.board-col {
+  margin-top: 30px;
+}

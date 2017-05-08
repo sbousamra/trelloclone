@@ -3,8 +3,31 @@ import React from 'react';
 class TitleBar extends React.Component {
 	render() {
 		return (
-			<div className="titlebar">
-				<h1 className="title"> Bass's Trello </h1>
+			<div className="container-fluid">
+				<nav className="navbar navbar-toggleable-md navbar-inverse bg-primary">
+				<div className="col-1">
+			 		<a className="navbar-brand" href="#"><button className="btn btn-primary btn-outline-info">Boards</button></a>
+				</div>
+				<div className="col-4">
+				  <div className="collapse navbar-collapse" id="navbarSupportedContent">
+			  		<form className="form-inline my-2 my-lg-0">
+				      <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
+				      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			    	</form>
+			    </div>
+				</div>
+			    <div className="col-3">
+			    	<img src="https://a.trellocdn.com/images/01ef898811a879595cea8ac3cd77a155/header-logo-2x.png" className="img-fluid" alt="Responsive"/>
+			    </div>
+			    <div className="col-1">
+			    	<ul className="navbar-nav">
+				    	<a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">+</button></a>
+				    	<a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">Sebastian Bou-Samra</button></a>
+				    	<a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">i</button></a>
+				    	<a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">bell</button></a>
+				    </ul>
+			    </div>
+				</nav>
 			</div>
 		);
 	}
