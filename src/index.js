@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
-import createHistory from 'history/createBrowserHistory';
-import ToDoApp from './components/app';
+import Home from './components/home';
+import Board from './components/board';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 ReactDOM.render(
-	<Router history={createBrowserHistory}>
-		<Route path="/" component={ToDoApp}/>
-	</Router>,
+  <Router>
+    <div>
+      <Route exact path="/" component={Home}/>
+      <Route path="/board/:id" component={Board}/>
+    </div>
+  </Router>,
 	document.getElementById('root')
 )

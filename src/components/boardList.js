@@ -17,11 +17,9 @@ class BoardList extends React.Component {
 				"btn-info": board.important
 			})
 
-			console.log(board)
-
 			return (
 				<div key={index} className="col-3 board-col">
-					<a href="www.google.com">
+					<a href={board.name}>
 						<button className={buttonClassNames}>{board.name}</button>
 					</a>
 				</div>

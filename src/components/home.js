@@ -1,16 +1,14 @@
 import React from 'react';
 import TitleBar from './titleBar'
 import BoardList from './boardList';
-import BoardName from './boardName';
-import CreateBoard from './createBoard';
 
-class ToDoApp extends React.Component {
+class Home extends React.Component {
 
   constructor() {
     super();
     this.state = {
     	boards: [
-        { name: "Tutorial Board (Start Here!)", important: true }
+        { name: "Tutorial Board (Start Here!)", important: true, id: "" }
       ]
     }
     this.handleDelete = this.handleDelete.bind(this)
@@ -41,4 +39,4 @@ class ToDoApp extends React.Component {
   }
 }
 
-export default ToDoApp;
+export default Home;
