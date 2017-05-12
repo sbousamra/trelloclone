@@ -1,6 +1,6 @@
 import React from 'react';
 import TitleBar from '../titleBar';
-import CreateList from './createList';
+import ListOfLists from './listOfLists';
 
 class Board extends React.Component {
 
@@ -33,9 +33,9 @@ class Board extends React.Component {
 		return (
 			<div>
 				<TitleBar/>
-				<div className="col-3 board-col">
+				<div className="container-fluid">
 					<h3>{this.props.match.params.id}</h3>
-					<CreateList updateList={this.updateList} handleDelete={this.handleDelete}/>
+					<ListOfLists list={this.state.list} updateList={this.updateList}/>
 				</div>
 			</div>
 		)

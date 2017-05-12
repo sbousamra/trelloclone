@@ -49,14 +49,15 @@ class CreateList extends React.Component {
 			<div className="card">
 	      <div className="card-block">
 	        <input className="form-control" value={this.state.name} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
-	        <button className="btn btn-success savebtn-spacing" onClick={this.addBoard}>Save</button>
+	        <p></p>
+	        <button className="btn btn-success" onClick={this.addBoard}>Save</button>
 	      </div>
 	    </div>
 
 	  if (!this.state.isToggled) {
 	  	return (
 	  		<div>
-	  			<button className="btn btn-secondary btn-lg btn-block" onClick={this.toggle}>Create new board...</button>
+	  			<button className="btn btn-secondary btn-m btn-block" onClick={this.toggle}>Create new board...</button>
 	  		</div>
 	  	)
 	  } else {
