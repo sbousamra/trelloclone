@@ -1,6 +1,6 @@
 import React from 'react';
-import TitleBar from './titleBar'
-import BoardList from './boardList';
+import TitleBar from '../titleBar'
+import BoardList from './boardNameList';
 
 class Home extends React.Component {
 
