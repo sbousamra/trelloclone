@@ -31,7 +31,7 @@ class Board extends React.Component {
 		console.log(this.state)
 
 		return (
-			<div>
+			<div className="boardpage-bgcolor">
 				<TitleBar/>
 				<div className="container-fluid">
 					<h3>{this.props.match.params.id}</h3>
