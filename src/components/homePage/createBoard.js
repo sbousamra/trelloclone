@@ -34,7 +34,8 @@ class CreateBoard extends React.Component {
   	}
   	this.props.addBoard(newBoard)
 	  this.setState({
-	    boardName: ""
+	    boardName: "",
+	    isToggled: false
 	  })
   }
 

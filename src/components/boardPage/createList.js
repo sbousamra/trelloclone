@@ -44,7 +44,6 @@ class CreateList extends React.Component {
   }
 
 	render() {
-
 		const newCard = 
 			<div className="card">
 	      <div className="card-block">
@@ -57,7 +56,7 @@ class CreateList extends React.Component {
 	  if (!this.state.isToggled) {
 	  	return (
 	  		<div>
-	  			<button className="btn btn-secondary btn-m btn-block" onClick={this.toggle}>Create new board...</button>
+	  			<button className="btn btn-secondary btn-m btn-block" onClick={this.toggle}>Add a list...</button>
 	  		</div>
 	  	)
 	  } else {
