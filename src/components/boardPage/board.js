@@ -31,11 +31,11 @@ class Board extends React.Component {
 		console.log(this.state)
 
 		return (
-			<div className="boardpage-bgcolor">
+			<div>
 				<TitleBar/>
-				<div className="container-fluid">
+				<div className="container-fluid board-col">
 					<h3>{this.props.match.params.id}</h3>
-					<ListOfLists list={this.state.list} updateList={this.updateList}/>
+					<ListOfLists list={this.state.list} updateList={this.updateList} cards={this.state.cards}/>
 				</div>
 			</div>
 		)

@@ -45,18 +45,17 @@ class CreateList extends React.Component {
 
 	render() {
 		const newCard = 
-			<div className="card">
+			<div className="card card-inverse card-danger">
 	      <div className="card-block">
-	        <input className="form-control" value={this.state.name} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
-	        <p></p>
-	        <button className="btn btn-success" onClick={this.addBoard}>Save</button>
+	        <input placeholder="Add a list..." className="form-control" value={this.state.name} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
+	        <button className="btn btn-success savebtn-spacing" onClick={this.addBoard}>Save</button>
 	      </div>
 	    </div>
 
 	  if (!this.state.isToggled) {
 	  	return (
 	  		<div>
-	  			<button className="btn btn-secondary btn-m btn-block" onClick={this.toggle}>Add a list...</button>
+	  			<button className="btn btn-secondary btn-lg btn-block" onClick={this.toggle}>Add a list...</button>
 	  		</div>
 	  	)
 	  } else {

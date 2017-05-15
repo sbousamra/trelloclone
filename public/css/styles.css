@@ -16,10 +16,17 @@
 }
 
 .savebtn-spacing {
-	margin-top: 30px;
-	margin-bottom: 50px;
+	margin-top: 15px;
 }
 
 .boardpage-bgcolor {
 	background-color: black;
+}
+
+.boardpage-namecolor {
+	color: white;
+}
+
+.boardpage-cardpadding {
+	padding: -20px;
 }

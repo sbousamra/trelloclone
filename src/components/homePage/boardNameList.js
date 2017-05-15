@@ -19,7 +19,7 @@ class BoardList extends React.Component {
 
 			return (
 				<div key={index} className="col-3 board-col">
-					<a href={board.name}>
+					<a href={"/board/" + board.name}>
 						<button className={buttonClassNames}>{board.name}</button>
 					</a>
 				</div>

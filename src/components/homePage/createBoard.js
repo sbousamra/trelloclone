@@ -51,7 +51,7 @@ class CreateBoard extends React.Component {
 	      <div className="text-center"><div className="card-header">Create Board</div></div>
 	      <div className="card-block">
 	        <h5 className="card-subtitle mb-2">Title</h5>
-	        <input className="form-control" value={this.state.boardName} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
+	        <input placeholder="Create a board..." className="form-control" value={this.state.boardName} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
 	        &nbsp;
 	        <h5 className="card-subtitle mb-2">Team</h5>
 	        <p className="card-text">

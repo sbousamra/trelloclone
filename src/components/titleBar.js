@@ -3,7 +3,7 @@ import React from 'react';
 class TitleBar extends React.Component {
 	render() {
 		return (
-			<div className="container-fluid">
+			<div className="container-fluid bg-primary">
 				<nav className="navbar navbar-toggleable-md navbar-inverse bg-primary">
 				<div className="col-1">
 			 		<a className="navbar-brand" href="#"><button className="btn btn-primary btn-outline-info">Boards</button></a>
@@ -17,7 +17,9 @@ class TitleBar extends React.Component {
 			    </div>
 				</div>
 			    <div className="col-3">
-			    	<img src="https://a.trellocdn.com/images/01ef898811a879595cea8ac3cd77a155/header-logo-2x.png" className="img-fluid" alt="Responsive"/>
+			    	<a href="/">
+			    		<img src="https://a.trellocdn.com/images/01ef898811a879595cea8ac3cd77a155/header-logo-2x.png" className="img-fluid" alt="Responsive"/>
+			    	</a>
 			    </div>
 			    <div className="col-1">
 			    	<ul className="navbar-nav">
