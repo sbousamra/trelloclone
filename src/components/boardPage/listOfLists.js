@@ -1,5 +1,6 @@
 import React from 'react';
-import CreateList from './createList'
+import CreateList from './createList';
+import CreateSubCard from './createSubCard';
 
 class ListOfLists extends React.Component { 
 
@@ -10,6 +11,7 @@ class ListOfLists extends React.Component {
 			return (
 				<div key={index} className="col-3 board-col">
 						<button className="btn btn-danger btn-block">{list.listName}</button>
+						<CreateSubCard updateSubCardList={this.props.updateSubCardList}/>
 				</div>
 			)
 		})

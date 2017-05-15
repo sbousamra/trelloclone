@@ -8,7 +8,7 @@ ReactDOM.render(
   <Router>
     <div>
       <Route exact path="/" component={Home}/>
-      <Route path="/board/:id" component={Board}/>
+      <Route path="/boards/:id" component={Board}/>
     </div>
   </Router>,
 	document.getElementById('root')

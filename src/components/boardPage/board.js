@@ -7,9 +7,10 @@ class Board extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			list: [ { listName: "", cards: { description: "" } }]
+			list: [ { listName: "",  subCards: [ { subCard: "" } ] } ]
 		}
 			this.updateList = this.updateList.bind(this)
+			this.updateSubCardList = this.updateSubCardList.bind(this)
 			this.handleDelete = this.handleDelete.bind(this)
 	}
 
@@ -21,6 +22,13 @@ class Board extends React.Component {
     })
   }
 
+  updateSubCardList(content) {
+    const updatedSubCardList = this.state.list.subCards.concat([content])
+    this.setState({
+      subCards: updatedSubCardList
+    })
+  }
+
   handleDelete(e, index) {
     this.state.list.splice(index, 1)
     this.setState({list: this.state.list})
@@ -28,14 +36,14 @@ class Board extends React.Component {
 
 	render() {
 
-		console.log(this.state)
+		console.log(this.state.list)
 
 		return (
 			<div>
 				<TitleBar/>
 				<div className="container-fluid board-col">
 					<h3>{this.props.match.params.id}</h3>
-					<ListOfLists list={this.state.list} updateList={this.updateList} cards={this.state.cards}/>
+					<ListOfLists list={this.state.list} updateList={this.updateList} updateSubCardList={this.updateSubCardList}/>
 				</div>
 			</div>
 		)
