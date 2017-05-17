@@ -29,9 +29,9 @@ class CreateSubCard extends React.Component {
 
   addCard() {
   	const newCard = {
-  		this.state.subCardId: {
-  			subCard: this.state.subCard
-  		}
+  		// this.state.subCardId: {
+  		// 	subCard: this.state.subCard
+  		// }
   	}
   	this.props.addSubCard(this.state.subCardId, newCard)
 	  this.setState({
