@@ -6,6 +6,7 @@ class CreateSubCard extends React.Component {
 		super();
 		this.state = {
 			subCard: "",
+			subCardId: 0,
 			isToggled: false
 		}
 		this.handleInput = this.handleInput.bind(this)
@@ -28,11 +29,14 @@ class CreateSubCard extends React.Component {
 
   addCard() {
   	const newCard = {
-  		subCard: this.state.subCard
+  		this.state.subCardId: {
+  			subCard: this.state.subCard
+  		}
   	}
-  	this.props.updateSubCardList(newCard)
+  	this.props.addSubCard(this.state.subCardId, newCard)
 	  this.setState({
 	    subCard: "",
+	    subCardId: this.state.subCardId + 1,
 	    isToggled: false
 	  })
   }

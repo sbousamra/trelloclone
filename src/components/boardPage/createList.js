@@ -1,23 +1,31 @@
 import React from 'react';
+import CreateSubCard from './createSubCard';
+import _ from 'lodash';
 
 class CreateList extends React.Component {
 
 	constructor() {
 		super();
 		this.state = {
-			listName: "",
-			subCards:[],
+			listId: 0,
+			name: "",
+			subCards: {
+				subCardId: {
+					subCard: ""
+				}
+			},
 			isToggled: false
 		}
 		this.handleInput = this.handleInput.bind(this)
 		this.toggle = this.toggle.bind(this)
-		this.addBoard = this.addBoard.bind(this)
+		this.addList = this.addList.bind(this)
+		this.addSubCard = this.addSubCard.bind(this)
 		this.handleEnter = this.handleEnter.bind(this)
 	}
 
 	handleInput(e) {
     this.setState({
-    	listName: e.target.value
+    	name: e.target.value
     })
   }
 
@@ -27,21 +35,31 @@ class CreateList extends React.Component {
 		})
 	}
 
-  addBoard() {
-  	const newBoard = {
-  		listName: this.state.listName,
-  		subCards: this.state.subCards
+  addList() {
+  	const newList = {
+			this.state.listId: {
+	  		name: this.state.name,
+	  		subCards: this.state.subCards
+  		}
   	}
-  	this.props.updateList(newBoard)
+
+  	this.props.updateList(this.state.listId, newList)
 	  this.setState({
-	    listName: "",
+	    name: "",
+	    listId: this.state.listId + 1,
 	    isToggled: false
 	  })
   }
 
+  addSubCard(subCardId, subCard) {
+  	this.setState({
+  		subCards: this.state.subCards[subCardId] = subCard
+  	})
+  }
+
   handleEnter(e) {
 	  if (e.charCode === 13) {
-	    this.addBoard()
+	    this.addList()
 	  }
   }
 
@@ -50,7 +68,7 @@ class CreateList extends React.Component {
 			<div className="card card-inverse card-danger">
 	      <div className="card-block">
 	        <input placeholder="Add a list..." className="form-control" value={this.state.name} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
-	        <button className="btn btn-success savebtn-spacing" onClick={this.addBoard}>Save</button>
+	        <button className="btn btn-success savebtn-spacing" onClick={this.addList}>Save</button>
 	      </div>
 	    </div>
 
@@ -58,6 +76,7 @@ class CreateList extends React.Component {
 	  	return (
 	  		<div>
 	  			<button className="btn btn-secondary btn-lg btn-block" onClick={this.toggle}>Add a list...</button>
+	  			<CreateSubCard addSubCard={this.addSubCard}/>
 	  		</div>
 	  	)
 	  } else {

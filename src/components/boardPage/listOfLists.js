@@ -1,26 +1,30 @@
 import React from 'react';
 import CreateList from './createList';
 import CreateSubCard from './createSubCard';
+import _ from 'lodash';
 
 class ListOfLists extends React.Component { 
 
 	render() {
 
-		const list = this.props.list.slice(1).map((list, index) => {
+		// const lists = _.mapValues( this.props.lists.boards, function(board, key) {
+		// 	return (
+		// 		<div key={key} className="col-3 board-col">
+		// 				<button className="btn btn-danger btn-block">{board.name}</button>
+		// 		</div>
+		// 	)
+		// })
 
+		const subLists = _.mapValues ( this.props.lists.subcards, function(subCard, key) {
 			return (
-				<div key={index} className="col-3 board-col">
-						<button className="btn btn-danger btn-block">{list.listName}</button>
-						<CreateSubCard updateSubCardList={this.props.updateSubCardList}/>
-				</div>
+				subCard + key
 			)
 		})
 
 		return (
 			<div className="row">
-				{list}
 	      <div className="col-3 board-col">
-	      	<CreateList updateList={this.props.updateList}/>
+	      	<CreateList lists={this.props.lists} updateList={this.props.updateList}/>
 	    	</div>
 	    </div>
 		)

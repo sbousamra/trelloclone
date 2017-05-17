@@ -16,7 +16,8 @@ app.get('/boards', (req, res) => {
 	return res.json([{"bass is beast": true, "dom is noob": true }])
 })
 
-app.get('/boards/testboard', (req, res) => {
+app.get('/boards/:id', (req, res) => {
+	console.log(req.params)
 	res.send("test worked")
 })
 
