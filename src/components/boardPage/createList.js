@@ -9,11 +9,6 @@ class CreateList extends React.Component {
 		this.state = {
 			listId: 0,
 			name: "",
-			subCards: {
-				subCardId: {
-					subCard: ""
-				}
-			},
 			isToggled: false
 		}
 		this.handleInput = this.handleInput.bind(this)
@@ -37,10 +32,10 @@ class CreateList extends React.Component {
 
   addList() {
   	const newList = {
-			this.state.listId: {
-	  		name: this.state.name,
-	  		subCards: this.state.subCards
-  		}
+			// this.state.listId: {
+	  // 		name: this.state.name,
+	  // 		subCards: this.state.subCards
+  	// 	}
   	}
 
   	this.props.updateList(this.state.listId, newList)

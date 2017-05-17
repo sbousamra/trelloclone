@@ -7,14 +7,6 @@ class ListOfLists extends React.Component {
 
 	render() {
 
-		// const lists = _.mapValues( this.props.lists.boards, function(board, key) {
-		// 	return (
-		// 		<div key={key} className="col-3 board-col">
-		// 				<button className="btn btn-danger btn-block">{board.name}</button>
-		// 		</div>
-		// 	)
-		// })
-
 		const subLists = _.mapValues ( this.props.lists.subcards, function(subCard, key) {
 			return (
 				subCard + key
