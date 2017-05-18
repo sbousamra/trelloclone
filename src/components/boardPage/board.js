@@ -1,7 +1,7 @@
 import React from 'react';
 import TitleBar from '../titleBar';
 import ListOfLists from './listOfLists';
-import _ from 'lodash';
+import * as lodash from 'lodash';
 
 class Board extends React.Component {
 
@@ -10,21 +10,24 @@ class Board extends React.Component {
 		this.state = {
 			lists: {}
 		}
-		this.updateList = this.updateList.bind(this)
-		this.handleDelete = this.handleDelete.bind(this)
+		this.addList = this.addList.bind(this)
+		this.randId = this.randId.bind(this)
 	}
 
 
-	updateList(listId, content) {
+	addList(name) {
+		const randId = this.randId()
+		console.log(randId)
+		const updatedList = lodash.extend(this.state.lists, {[randId]: name} )
+
     this.setState({
-      lists: this.state.lists[listId] = content
+      lists: updatedList
     })
   }
 
-  handleDelete(e, index) {
-    this.state.list.splice(index, 1)
-    this.setState({list: this.state.list})
-  }
+  randId() {
+		return Math.random().toString(36).substr(2, 10);
+	}
 
 	render() {
 
@@ -35,7 +38,7 @@ class Board extends React.Component {
 				<TitleBar/>
 				<div className="container-fluid board-col">
 					<h3>{this.props.match.params.id}</h3>
-					<ListOfLists lists={this.state.lists} updateList={this.updateList}/>
+					<ListOfLists lists={this.state.lists} addList={this.addList}/>
 				</div>
 			</div>
 		)

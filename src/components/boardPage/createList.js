@@ -7,19 +7,12 @@ class CreateList extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			listId: 0,
 			name: "",
-			subCards: {
-				subCardId: {
-					subCard: ""
-				}
-			},
 			isToggled: false
 		}
 		this.handleInput = this.handleInput.bind(this)
 		this.toggle = this.toggle.bind(this)
 		this.addList = this.addList.bind(this)
-		this.addSubCard = this.addSubCard.bind(this)
 		this.handleEnter = this.handleEnter.bind(this)
 	}
 
@@ -37,25 +30,21 @@ class CreateList extends React.Component {
 
   addList() {
   	const newList = {
-			this.state.listId: {
-	  		name: this.state.name,
-	  		subCards: this.state.subCards
-  		}
+	  	name: this.state.name
   	}
 
-  	this.props.updateList(this.state.listId, newList)
+  	this.props.addList(newList)
 	  this.setState({
 	    name: "",
-	    listId: this.state.listId + 1,
 	    isToggled: false
 	  })
   }
 
-  addSubCard(subCardId, subCard) {
-  	this.setState({
-  		subCards: this.state.subCards[subCardId] = subCard
-  	})
-  }
+  // addSubCard(subCardId, subCard) {
+  // 	this.setState({
+  // 		subCards: this.state.subCards[subCardId] = subCard
+  // 	})
+  // }
 
   handleEnter(e) {
 	  if (e.charCode === 13) {
@@ -76,7 +65,6 @@ class CreateList extends React.Component {
 	  	return (
 	  		<div>
 	  			<button className="btn btn-secondary btn-lg btn-block" onClick={this.toggle}>Add a list...</button>
-	  			<CreateSubCard addSubCard={this.addSubCard}/>
 	  		</div>
 	  	)
 	  } else {

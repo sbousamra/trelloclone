@@ -15,16 +15,16 @@ class ListOfLists extends React.Component {
 		// 	)
 		// })
 
-		const subLists = _.mapValues ( this.props.lists.subcards, function(subCard, key) {
-			return (
-				subCard + key
-			)
-		})
+		// const subLists = _.mapValues ( this.props.lists.subcards, function(subCard, key) {
+		// 	return (
+		// 		subCard + key
+		// 	)
+		// })
 
 		return (
 			<div className="row">
 	      <div className="col-3 board-col">
-	      	<CreateList lists={this.props.lists} updateList={this.props.updateList}/>
+	      	<CreateList lists={this.props.lists} addList={this.props.addList}/>
 	    	</div>
 	    </div>
 		)

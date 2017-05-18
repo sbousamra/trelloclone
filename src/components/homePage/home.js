@@ -1,6 +1,6 @@
 import React from 'react';
 import TitleBar from '../titleBar'
-import BoardList from './boardNameList';
+import BoardNameList from './boardNameList';
 
 class Home extends React.Component {
 
@@ -32,7 +32,7 @@ class Home extends React.Component {
       <div>
         <TitleBar/>
         <div className="container-fluid">
-          <BoardList boards={this.state.boards} addBoard={this.addBoard}/>
+          <BoardNameList boards={this.state.boards} addBoard={this.addBoard}/>
         </div>
       </div>
     )
