@@ -17,7 +17,6 @@ class Board extends React.Component {
 
 	addList(name) {
 		const randId = this.randId()
-		console.log(randId)
 		const updatedList = lodash.extend(this.state.lists, {[randId]: name} )
 
     this.setState({
