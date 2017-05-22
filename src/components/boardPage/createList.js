@@ -1,5 +1,4 @@
 import React from 'react';
-import CreateSubCard from './createSubCard';
 import _ from 'lodash';
 
 class CreateList extends React.Component {
@@ -32,19 +31,12 @@ class CreateList extends React.Component {
   	const newList = {
 	  	name: this.state.name
   	}
-
   	this.props.addList(newList)
 	  this.setState({
 	    name: "",
 	    isToggled: false
 	  })
   }
-
-  // addSubCard(subCardId, subCard) {
-  // 	this.setState({
-  // 		subCards: this.state.subCards[subCardId] = subCard
-  // 	})
-  // }
 
   handleEnter(e) {
 	  if (e.charCode === 13) {

@@ -11,6 +11,7 @@ class Board extends React.Component {
 			lists: {}
 		}
 		this.addList = this.addList.bind(this)
+		this.addSubCard = this.addSubCard.bind(this)
 		this.randId = this.randId.bind(this)
 	}
 
@@ -18,8 +19,15 @@ class Board extends React.Component {
 	addList(name) {
 		const randId = this.randId()
 		const updatedList = lodash.extend(this.state.lists, {[randId]: name} )
-
     this.setState({
+      lists: updatedList
+    })
+  }
+
+  addSubCard(listId, content) {
+  	const randId = this.randId()
+		const updatedList = lodash.extend(this.state.lists.listId.name, {[randId]: content} )
+		this.setState({
       lists: updatedList
     })
   }
@@ -37,7 +45,7 @@ class Board extends React.Component {
 				<TitleBar/>
 				<div className="container-fluid board-col">
 					<h3>{this.props.match.params.id}</h3>
-					<ListOfLists lists={this.state.lists} addList={this.addList}/>
+					<ListOfLists lists={this.state.lists} addList={this.addList} addSubCard={this.addSubCard}/>
 				</div>
 			</div>
 		)
