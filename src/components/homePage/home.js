@@ -1,25 +1,34 @@
 import React from 'react';
 import TitleBar from '../titleBar'
 import BoardNameList from './boardNameList';
+import * as lodash from 'lodash';
 
 class Home extends React.Component {
 
   constructor() {
     super();
     this.state = {
-    	boards: [
-        { name: "Tutorial Board (Start Here!)", important: true, id: "" }
-      ]
+    	boards:
+        { 0: {
+          name: "Tutorial Board (Start Here!)", important: true, id: "" 
+        }
+      }
     }
     this.handleDelete = this.handleDelete.bind(this)
     this.addBoard = this.addBoard.bind(this)
+    this.randId = this.randId.bind(this)
   }
 
-  addBoard(board) {
-    const updatedList = this.state.boards.concat([board])
+  addBoard(name) {
+    const randId = this.randId()
+    const updatedBoard = lodash.extend(this.state.boards, {[randId]: name} )
     this.setState({
-      boards: updatedList
+      boards: updatedBoard
     })
+  }
+
+  randId() {
+    return Math.random().toString(36).substr(2, 10);
   }
 
   handleDelete(e, index) {

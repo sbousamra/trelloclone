@@ -1,12 +1,13 @@
 import React from 'react';
-import CreateBoard from './createBoard'
-import classNames from 'classnames'
+import CreateBoard from './createBoard';
+import classNames from 'classnames';
+import * as lodash from 'lodash';
 
 class BoardNameList extends React.Component { 
 
 	render() {
 
-		const list = this.props.boards.map((board, index) => {
+		const list = lodash.map(this.props.boards, function(board, id) {
 
 			const buttonClassNames = classNames({
 				"btn": true,
@@ -18,7 +19,7 @@ class BoardNameList extends React.Component {
 			})
 
 			return (
-				<div key={index} className="col-3 board-col">
+				<div key={id} className="col-3 board-col">
 					<a href={"/boards/" + board.name}>
 						<button className={buttonClassNames}>{board.name}</button>
 					</a>

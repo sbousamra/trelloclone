@@ -24,9 +24,9 @@ class Board extends React.Component {
     })
   }
 
-  addSubCard(listId, content) {
+  addSubCard(content) {
   	const randId = this.randId()
-		const updatedList = lodash.extend(this.state.lists.listId.name, {[randId]: content} )
+		const updatedList = lodash.extend(this.state.lists.name, {[randId]: content} )
 		this.setState({
       lists: updatedList
     })
