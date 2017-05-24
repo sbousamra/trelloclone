@@ -41,7 +41,7 @@ class App extends React.Component {
 		const board = <Board boards={this.state.boards}/>
 
 		return (
-			<Router>
+		  <Router>
 		    <div>
 		      <Route exact path="/" component={() => home}/>
 		      <Route path="/boards/:id" component={() => board}/>
