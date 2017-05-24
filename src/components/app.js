@@ -32,7 +32,7 @@ class App extends React.Component {
     return Math.random().toString(36).substr(2, 10);
   }
 
-  // handleDelete(e, id) {
+  // handleDelete(e) {
   //   this.setState({boards: delete this.state.boards.id})
   // }
 
