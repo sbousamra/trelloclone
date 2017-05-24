@@ -44,7 +44,6 @@ class Board extends React.Component {
 			<div>
 				<TitleBar/>
 				<div className="container-fluid board-col">
-					<h3>{this.props.match.params.id}</h3>
 					<ListOfLists lists={this.state.lists} addList={this.addList} addSubCard={this.addSubCard}/>
 				</div>
 			</div>
