@@ -6,15 +6,15 @@ import * as lodash from 'lodash';
 
 class App extends React.Component {
 
-	constructor() {
-	  super();
-	  this.state = {
-	  	boards:
-	      { 0: {
-	        name: "Tutorial Board (Start Here!)", important: true, id: "" 
-	      }
-	    }
-	  }
+  constructor() {
+    super();
+    this.state = {
+      boards:
+        { 0: {
+          name: "Tutorial Board (Start Here!)", important: true, id: "" 
+        }
+      }
+    }
     this.addBoard = this.addBoard.bind(this)
     this.randId = this.randId.bind(this)
     // this.handleDelete = this.handleDelete.bind(this)
@@ -36,19 +36,19 @@ class App extends React.Component {
   //   this.setState({boards: delete this.state.boards.id})
   // }
 
-	render() {
-		const home = <Home boards={this.state.boards} addBoard={this.addBoard}/>
-		const board = <Board boards={this.state.boards}/>
+  render() {
+    const home = <Home boards={this.state.boards} addBoard={this.addBoard}/>
+    const board = <Board boards={this.state.boards}/>
 
-		return (
-		  <Router>
-		    <div>
-		      <Route exact path="/" component={() => home}/>
-		      <Route path="/boards/:id" component={() => board}/>
-		    </div>
-		  </Router>
-		)
-	}
+    return (
+      <Router>
+        <div>
+          <Route exact path="/" component={() => home}/>
+          <Route path="/boards/:id" component={() => board}/>
+        </div>
+      </Router>
+    )
+  }
 }
 
 export default App;

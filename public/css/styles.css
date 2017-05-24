@@ -1,7 +1,7 @@
 /* button styling */
 
 .btn-board {
-	height: 150px;
+  height: 150px;
 }
 
 /* titlebar styling */
@@ -16,17 +16,17 @@
 }
 
 .savebtn-spacing {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 
 .boardpage-bgcolor {
-	background-color: black;
+  background-color: black;
 }
 
 .boardpage-namecolor {
-	color: white;
+  color: white;
 }
 
 .boardpage-cardpadding {
-	padding: -20px;
+  padding: -20px;
 }

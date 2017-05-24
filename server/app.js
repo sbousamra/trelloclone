@@ -13,12 +13,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/boards', (req, res) => {
-	return res.json([{"bass is beast": true, "dom is noob": true }])
+  return res.json([{"bass is beast": true, "dom is noob": true }])
 })
 
 app.get('/boards/:id', (req, res) => {
-	console.log(req.params)
-	res.send("test worked")
+  console.log(req.params)
+  res.send("test worked")
 })
 
 const PORT = process.env.PORT || 9000;

@@ -5,25 +5,25 @@ import * as lodash from 'lodash';
 
 class ListOfLists extends React.Component { 
 
-	render() {
+  render() {
 
-		const lists = lodash.map(this.props.lists, function(list, id) {
-			return (
-				<div key={id} className="col-3 board-col">
-					<button className="btn btn-danger btn-block">{list.name}</button>
-				</div>
-			)
-		})
+    const lists = lodash.map(this.props.lists, function(list, id) {
+      return (
+        <div key={id} className="col-3 board-col">
+          <button className="btn btn-danger btn-block">{list.name}</button>
+        </div>
+      )
+    })
 
-		return (
-			<div className="row">
-			{lists}
-	      <div className="col-3 board-col">
-	      	<CreateList addList={this.props.addList}/>
-	    	</div>
-	    </div>
-		)
-	}
+    return (
+      <div className="row">
+      {lists}
+        <div className="col-3 board-col">
+          <CreateList addList={this.props.addList}/>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default ListOfLists;
