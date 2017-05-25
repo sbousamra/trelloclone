@@ -18,15 +18,15 @@ class Board extends React.Component {
 
   addList(name) {
     const randId = this.randId()
-    const updatedList = lodash.extend(this.state.lists, {[randId]: name} )
+    const updatedList = lodash.extend(this.state.lists, {[randId]: name})
     this.setState({
       lists: updatedList
     })
   }
 
-  addSubCard(content) {
+  addSubCard(subCard, id) {
     const randId = this.randId()
-    const updatedList = lodash.extend(this.state.lists.name, {[randId]: content} )
+    const updatedList = lodash.extend(this.state.lists[id], {[randId]: subCard})
     this.setState({
       lists: updatedList
     })

@@ -10,7 +10,7 @@ class CreateSubCard extends React.Component {
     }
     this.handleInput = this.handleInput.bind(this)
     this.toggle = this.toggle.bind(this)
-    this.addCard = this.addCard.bind(this)
+    this.addSubCard = this.addSubCard.bind(this)
     this.handleEnter = this.handleEnter.bind(this)
   }
 
@@ -27,11 +27,11 @@ class CreateSubCard extends React.Component {
   }
 
 
-  addCard() {
+  addSubCard() {
     const newCard = {
       subCard: this.state.subCard
     }
-    this.props.addSubCard(newCard)
+    this.props.addSubCard(newCard, this.props.id)
     this.setState({
       subCard: "",
       isToggled: false
@@ -40,7 +40,7 @@ class CreateSubCard extends React.Component {
 
   handleEnter(e) {
     if (e.charCode === 13) {
-      this.addCard()
+      this.addSubCard()
     }
   }
 
@@ -50,7 +50,7 @@ class CreateSubCard extends React.Component {
       <div className="card card-inverse card-danger">
         <div className="card-block">
           <input placeholder="Add a card..." className="form-control" value={this.state.subCard} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
-          <button className="btn btn-success savebtn-spacing" onClick={this.addCard}>Add</button>
+          <button className="btn btn-success savebtn-spacing" onClick={this.addSubCard}>Add</button>
         </div>
       </div>
 
