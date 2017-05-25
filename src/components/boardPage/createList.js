@@ -29,7 +29,7 @@ class CreateList extends React.Component {
 
   addList() {
     const newList = {
-      name: this.state.name
+      name: this.state.name,
     }
     this.props.addList(newList)
     this.setState({
