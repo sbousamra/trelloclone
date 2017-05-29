@@ -9,13 +9,17 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      boards:
-        { 0: {
-          name: "Tutorial Board (Start Here!)", important: true, id: "" 
+      boards: { tutorialBoard: {
+        name: "Tutorial Board (Start Here!)", 
+        important: true
         }
-      }
+      },
+      boardIdTracker: ""
     }
     this.addBoard = this.addBoard.bind(this)
+    this.addList = this.addList.bind(this)
+    this.addSubCard = this.addSubCard.bind(this)
+    this.setBoardIdTracker = this.setBoardIdTracker.bind(this)
     this.randId = this.randId.bind(this)
     // this.handleDelete = this.handleDelete.bind(this)
   }
@@ -28,6 +32,28 @@ class App extends React.Component {
     })
   }
 
+  addList(name) {
+    const randId = this.randId()
+    const updatedList = lodash.extend(this.state.boards[this.state.boardIdTracker].lists, {[randId]: name})
+    this.setState({
+      boards: updatedList
+    })
+  }
+
+  addSubCard(listId, subCard) {
+    const randId = this.randId()
+    const updatedSubCard = lodash.extend(this.state.boards[this.state.boardIdTracker].lists[listId], {[randId]: subCard})
+    this.setState({
+      boards: updatedSubCard
+    })
+  }
+
+  setBoardIdTracker(id) {
+    this.setState({
+      boardIdTracker: id
+    })
+  }
+
   randId() {
     return Math.random().toString(36).substr(2, 10);
   }
@@ -37,8 +63,9 @@ class App extends React.Component {
   // }
 
   render() {
-    const home = <Home boards={this.state.boards} addBoard={this.addBoard}/>
-    const board = <Board boards={this.state.boards}/>
+    console.log(this.state)
+    const home = <Home boards={this.state.boards} addBoard={this.addBoard} setBoardIdTracker={this.setBoardIdTracker}/>
+    const board = <Board board={this.state.boards[this.state.currentBoardId]} addList={this.addList} addSubCard={this.addSubCard}/>
 
     return (
       <Router>

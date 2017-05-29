@@ -29,8 +29,8 @@ class CreateBoard extends React.Component {
   addBoard() {
     const newBoard = {
       name: this.state.boardName,
-      important: false,
-      id: this.state.boardName
+      lists: {},
+      important: false
     }
     this.props.addBoard(newBoard)
     this.setState({

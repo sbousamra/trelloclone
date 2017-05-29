@@ -9,7 +9,7 @@ class Home extends React.Component {
       <div>
         <TitleBar/>
         <div className="container-fluid">
-          <BoardNameList boards={this.props.boards} addBoard={this.props.addBoard}/>
+          <BoardNameList boards={this.props.boards} addBoard={this.props.addBoard} setBoardIdTracker={this.props.setBoardIdTracker}/>
         </div>
       </div>
     )

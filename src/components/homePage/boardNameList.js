@@ -21,11 +21,11 @@ class BoardNameList extends React.Component {
       return (
         <div key={id} className="col-3 board-col">
           <a href={"/boards/" + board.name}>
-            <button className={buttonClassNames}>{board.name}</button>
+            <button onClick={() => this.props.setBoardIdTracker(id)} className={buttonClassNames}>{board.name}</button>
           </a>
         </div>
       )
-    })
+    }.bind(this))
 
     return (
       <div className="row">

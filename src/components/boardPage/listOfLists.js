@@ -7,7 +7,8 @@ class ListOfLists extends React.Component {
 
   render() {
 
-    const lists = lodash.map(this.props.lists, function(list, id) {
+    const lists = lodash.map(this.props.board, function(list, id) {
+      console.log(list)
       return (
         <div key={id} className="col-3 board-col">
           <button className="btn btn-danger btn-block">{list.name}</button>

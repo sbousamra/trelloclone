@@ -31,7 +31,7 @@ class CreateSubCard extends React.Component {
     const newCard = {
       subCard: this.state.subCard
     }
-    this.props.addSubCard(newCard, this.props.id)
+    this.props.addSubCard(this.props.boardId, this.props.listId, newCard)
     this.setState({
       subCard: "",
       isToggled: false
