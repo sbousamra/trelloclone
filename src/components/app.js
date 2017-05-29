@@ -24,17 +24,17 @@ class App extends React.Component {
     // this.handleDelete = this.handleDelete.bind(this)
   }
 
-  addBoard(name) {
+  addBoard(board) {
     const randId = this.randId()
-    const updatedBoard = lodash.extend(this.state.boards, {[randId]: name} )
+    const updatedBoard = lodash.extend(this.state.boards, {[randId]: board} )
     this.setState({
       boards: updatedBoard
     })
   }
 
-  addList(name) {
+  addList(list) {
     const randId = this.randId()
-    const updatedList = lodash.extend(this.state.boards[this.state.boardIdTracker].lists, {[randId]: name})
+    const updatedList = lodash.extend(this.state.boards[this.state.boardIdTracker].lists, {[randId]: list})
     this.setState({
       boards: updatedList
     })
@@ -42,7 +42,7 @@ class App extends React.Component {
 
   addSubCard(listId, subCard) {
     const randId = this.randId()
-    const updatedSubCard = lodash.extend(this.state.boards[this.state.boardIdTracker].lists[listId], {[randId]: subCard})
+    const updatedSubCard = lodash.extend(this.state.boards[this.state.boardIdTracker].lists[listId].subCards, {[randId]: subCard})
     this.setState({
       boards: updatedSubCard
     })
