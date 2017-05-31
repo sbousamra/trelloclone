@@ -3,18 +3,14 @@ import Home from './homePage/home';
 import Board from './boardPage/board';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import * as lodash from 'lodash';
+import axios from 'axios';
 
 class App extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      boards: { tutorialBoard: {
-        name: "Tutorial Board (Start Here!)", 
-        important: true
-        }
-      },
-      boardIdTracker: ""
+      boards: {}
     }
     this.addBoard = this.addBoard.bind(this)
     this.addList = this.addList.bind(this)
@@ -24,11 +20,24 @@ class App extends React.Component {
     // this.handleDelete = this.handleDelete.bind(this)
   }
 
+  componentDidMount() {
+    axios.get("http://localhost:9000/boards").then((res) => {
+      this.setState({
+        boards: res.data,
+        boardIdTracker: ""
+      })
+    })
+  }
+
   addBoard(board) {
     const randId = this.randId()
     const updatedBoard = lodash.extend(this.state.boards, {[randId]: board} )
     this.setState({
       boards: updatedBoard
+    })
+
+    axios.post('/', this.state.boards).then((res) => {
+      return console.log(res.data)   
     })
   }
 
@@ -63,7 +72,7 @@ class App extends React.Component {
   // }
 
   render() {
-    console.log(this.state)
+    console.log(JSON.stringify(this.state))
     const home = <Home boards={this.state.boards} addBoard={this.addBoard} setBoardIdTracker={this.setBoardIdTracker}/>
     const board = <Board board={this.state.boards[this.state.currentBoardId]} addList={this.addList} addSubCard={this.addSubCard}/>
 

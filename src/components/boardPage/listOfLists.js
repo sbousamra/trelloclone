@@ -21,7 +21,7 @@ class ListOfLists extends React.Component {
       <div className="row">
       {lists}
         <div className="col-3 board-col">
-          <CreateList addList={this.props.addList}/>
+          <CreateList addList={this.props.addList} postBoard={this.props.postBoard}/>
         </div>
       </div>
     )

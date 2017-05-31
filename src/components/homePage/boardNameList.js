@@ -29,7 +29,7 @@ class BoardNameList extends React.Component {
 
     return (
       <div className="row">
-        {list}
+      {list}
         <div className="col-3 board-col">
           <CreateBoard addBoard={this.props.addBoard}/>
         </div>
