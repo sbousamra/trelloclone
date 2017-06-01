@@ -10,62 +10,44 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      boards: {}
+      boards: {},
+      boardIdTracker: ""
     }
     this.addBoard = this.addBoard.bind(this)
     this.addList = this.addList.bind(this)
-    this.addSubCard = this.addSubCard.bind(this)
-    this.setBoardIdTracker = this.setBoardIdTracker.bind(this)
-    this.randId = this.randId.bind(this)
     // this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
     axios.get("http://localhost:9000/boards").then((res) => {
       this.setState({
-        boards: res.data,
-        boardIdTracker: ""
+        boards: res.data
       })
     })
   }
 
   addBoard(board) {
-    const randId = this.randId()
-    const updatedBoard = lodash.extend(this.state.boards, {[randId]: board} )
-    this.setState({
-      boards: updatedBoard
-    })
-
-    axios.post('/', this.state.boards).then((res) => {
-      return console.log(res.data)   
+    axios.post('/boards', board).then((res) => {
+      this.setState({
+        boards: res.data
+      })
+    }).catch((error) => {
+      console.log(error)
     })
   }
 
   addList(list) {
-    const randId = this.randId()
-    const updatedList = lodash.extend(this.state.boards[this.state.boardIdTracker].lists, {[randId]: list})
-    this.setState({
-      boards: updatedList
+    axios.post('/boards/:id/lists', list).then((res) => {
+      this.setState({
+        boards: res.data
+      }).catch((error) => {
+        console.log(error)
+      })
     })
   }
 
-  addSubCard(listId, subCard) {
-    const randId = this.randId()
-    const updatedSubCard = lodash.extend(this.state.boards[this.state.boardIdTracker].lists[listId].subCards, {[randId]: subCard})
-    this.setState({
-      boards: updatedSubCard
-    })
-  }
-
-  setBoardIdTracker(id) {
-    this.setState({
-      boardIdTracker: id
-    })
-  }
-
-  randId() {
-    return Math.random().toString(36).substr(2, 10);
-  }
+  // addSubCard(listId, subCard) {
+  // }
 
   // handleDelete(e, id) {
   //   this.setState({boards: delete this.state.boards.id})
@@ -73,8 +55,8 @@ class App extends React.Component {
 
   render() {
     console.log(JSON.stringify(this.state))
-    const home = <Home boards={this.state.boards} addBoard={this.addBoard} setBoardIdTracker={this.setBoardIdTracker}/>
-    const board = <Board board={this.state.boards[this.state.currentBoardId]} addList={this.addList} addSubCard={this.addSubCard}/>
+    const home = <Home boards={this.state.boards} addBoard={this.addBoard}/>
+    const board = <Board board={this.state.boards} addList={this.addList}/>
 
     return (
       <Router>
@@ -88,3 +70,21 @@ class App extends React.Component {
 }
 
 export default App;
+
+// When the page loads you make a get request to /boards and you get back all the boards for the user.
+// You save this in the local state to it propogates to all the components.
+// 
+// WHen you add a board, all you need to do is send a post to the server with that board.
+// The server will either accept it and return a 200 with all the boards or an error 400.
+// On the client side just bind to the response for that post and set the board props to be the response that comes back if successful.
+// If its an error, show an error somewhere.
+
+
+
+
+
+
+
+
+
+
