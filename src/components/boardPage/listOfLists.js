@@ -7,8 +7,7 @@ class ListOfLists extends React.Component {
 
   render() {
 
-    const lists = lodash.map(this.props.board, function(list, id) {
-      console.log(list)
+    const lists = lodash.map(this.props.boards[this.props.match.params.id], function(list, id) {
       return (
         <div key={id} className="col-3 board-col">
           <button className="btn btn-danger btn-block">{list.name}</button>
@@ -21,7 +20,7 @@ class ListOfLists extends React.Component {
       <div className="row">
       {lists}
         <div className="col-3 board-col">
-          <CreateList addList={this.props.addList} postBoard={this.props.postBoard}/>
+          <CreateList addList={this.props.addList}/>
         </div>
       </div>
     )

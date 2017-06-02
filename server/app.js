@@ -24,7 +24,7 @@ function saveBoard(board) {
 }
 
 function saveList(boardId, list) {
-  lodash.extend(boards.boardId, {[randId()]: list})
+  lodash.extend(boards.boardId.lists, {[randId()]: list})
 }
 
 // Always return the main index.html, so react-router render the route in the client
@@ -51,7 +51,7 @@ app.get('/boards/:id/lists', (req, res) => {
 })
 
 app.post('/boards/:id/lists', (req, res) => {
-  saveList(this.props.params.id, req.body)
+  saveList(req.params.id, req.body)
   res.status(200).json(boards)
 })
 

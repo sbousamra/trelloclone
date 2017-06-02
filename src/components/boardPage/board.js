@@ -11,7 +11,7 @@ class Board extends React.Component {
       <div>
         <TitleBar/>
         <div className="container-fluid board-col">
-          <ListOfLists board={this.props.board} addList={this.props.addList}/>
+          <ListOfLists boards={this.props.boards} addList={this.props.addList}/>
         </div>
       </div>
     )

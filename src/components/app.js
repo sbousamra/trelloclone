@@ -10,8 +10,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      boards: {},
-      boardIdTracker: ""
+      boards: {}
     }
     this.addBoard = this.addBoard.bind(this)
     this.addList = this.addList.bind(this)
@@ -40,9 +39,9 @@ class App extends React.Component {
     axios.post('/boards/:id/lists', list).then((res) => {
       this.setState({
         boards: res.data
-      }).catch((error) => {
-        console.log(error)
       })
+    }).catch((error) => {
+      console.log(error)
     })
   }
 
@@ -55,14 +54,12 @@ class App extends React.Component {
 
   render() {
     console.log(JSON.stringify(this.state))
-    const home = <Home boards={this.state.boards} addBoard={this.addBoard}/>
-    const board = <Board board={this.state.boards} addList={this.addList}/>
 
     return (
       <Router>
         <div>
-          <Route exact path="/" component={() => home}/>
-          <Route path="/boards/:id" component={() => board}/>
+          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard}/>}/>
+          <Route path="/boards/:id" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList}/>}/>
         </div>
       </Router>
     )
