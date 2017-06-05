@@ -6,7 +6,7 @@ import * as lodash from 'lodash';
 class ListOfLists extends React.Component { 
 
   render() {
-    const board = this.props.boards[this.props.match.params.id]
+    const board = this.props.boards[this.props.match.params.id].lists
     console.log(board)
 
     const lists = lodash.map(board, function(list, id) {
