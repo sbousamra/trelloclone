@@ -32,7 +32,7 @@ class CreateList extends React.Component {
       name: this.state.name,
       subCards: {}
     }
-    this.props.addList(newList)
+    this.props.addList(this.props.boardId, newList)
     this.setState({
       name: "",
       isToggled: false

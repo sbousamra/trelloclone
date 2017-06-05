@@ -3,10 +3,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const lodash = require('lodash');
 
-const app = express(); // ???? wtf ???
+const app = express();
 
-// Serve static assets
-app.use(express.static(path.resolve(__dirname, '..', 'build'))); // What the hell does this do???
+app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.use(bodyParser.json())
 
 var boards = {
@@ -27,10 +26,8 @@ function saveList(boardId, list) {
   lodash.extend(boards[boardId].lists, {[randId()]: list})
 }
 
-// Always return the main index.html, so react-router render the route in the client
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html')); 
-  // how does this path.resolve work? the directory of index.html is ../public/index.html, where have we specified to return this path?
 });
 
 app.post('/boards', (req, res) => {
@@ -58,5 +55,5 @@ app.post('/boards/:id/lists', (req, res) => {
 const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}!`); // What does this listen for on port 9000? aka. what will we return?
+  console.log(`App listening on port ${PORT}!`);
 });

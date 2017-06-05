@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:9000/boards").then((res) => {
+    axios.get('http://localhost:9000/boards').then((res) => {
       this.setState({
         boards: res.data
       })
@@ -35,8 +35,8 @@ class App extends React.Component {
     })
   }
 
-  addList(list) {
-    axios.post('/boards/:id/lists', list).then((res) => {
+  addList(boardId, list) {
+    axios.post('/boards/' + boardId + '/lists', list).then((res) => {
       this.setState({
         boards: res.data
       })
