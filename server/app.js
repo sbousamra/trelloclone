@@ -61,7 +61,6 @@ app.get('/boards/:boardId/lists/:listId/cards', (req, res) => {
 })
 
 app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
-  console.log(req.params.listId)
   saveCard(req.params.boardId, req.params.listId, req.body)
   res.status(200).json(boards)
 })

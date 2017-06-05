@@ -9,17 +9,33 @@ class Board extends React.Component {
 
   render() {
 
-    if (!lodash.isEmpty(this.props.boards)) {
-      const boardId = this.props.match.params.id
-      const board = this.props.boards[boardId]
+    const boardId = this.props.match.params.boardId
+    const board = this.props.boards[boardId]
 
-      const lists = lodash.map(board.lists, function(list, id) {
-        return (
-          <div key={id} className="col-3 board-col">
-            <button className="btn btn-danger btn-block">{list.name}</button>
-            <CreateCard boardId={boardId} listId={id} addCard={this.props.addCard}/>
-          </div>
-        )
+    if (!lodash.isEmpty(this.props.boards)) {
+
+      const lists = lodash.map(board.lists, function(list, listId) {
+
+        if (!lodash.isEmpty(board.lists)) {
+
+          const cards = lodash.map(list.cards, function(card, cardId) {
+            return (
+              <div key={cardId} className="row">
+                <button className="btn btn-danger btn-block">{card}</button>
+              </div>
+            )
+          })
+
+          return (
+            <div key={listId} className="col-3 board-col">
+              <button className="btn btn-danger btn-block">{list.name}</button>
+              {cards}
+              <CreateCard boardId={boardId} listId={listId} addCard={this.props.addCard}/>
+            </div>
+          )
+        } else {
+          return null;
+        }
       }.bind(this))
 
       return (

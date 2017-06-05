@@ -65,7 +65,7 @@ class App extends React.Component {
       <Router>
         <div>
           <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard}/>}/>
-          <Route path="/boards/:id" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard}/>}/>
+          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard}/>}/>
         </div>
       </Router>
     )
