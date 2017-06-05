@@ -14,7 +14,7 @@ class App extends React.Component {
     }
     this.addBoard = this.addBoard.bind(this)
     this.addList = this.addList.bind(this)
-    // this.handleDelete = this.handleDelete.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -55,13 +55,11 @@ class App extends React.Component {
     })
   }
 
-  // handleDelete(e, id) {
-  //   this.setState({boards: delete this.state.boards.id})
-  // }
-
+  handleDelete(e, id) {
+    this.setState({boards: delete this.state.boards.id})
+  }
+  
   render() {
-    console.log(JSON.stringify(this.state))
-
     return (
       <Router>
         <div>
