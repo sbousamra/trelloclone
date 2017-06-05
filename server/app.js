@@ -26,6 +26,10 @@ function saveList(boardId, list) {
   lodash.extend(boards[boardId].lists, {[randId()]: list})
 }
 
+function saveCard(boardId, listId, card) {
+  lodash.extend(boards[boardId].lists[listId].cards, {[randId()]: card})
+}
+
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html')); 
 });
@@ -39,16 +43,26 @@ app.get('/boards', (req, res) => {
   res.json(boards)
 })
 
-app.get('/boards/:id', (req, res) => {
+app.get('/boards/:boardId', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 })
 
-app.get('/boards/:id/lists', (req, res) => {
-  res.json(boards[req.params.id].lists)
+app.get('/boards/:boardId/lists', (req, res) => {
+  res.json(boards[req.params.boardId].lists)
 })
 
-app.post('/boards/:id/lists', (req, res) => {
-  saveList(req.params.id, req.body)
+app.post('/boards/:boardId/lists', (req, res) => {
+  saveList(req.params.boardId, req.body)
+  res.status(200).json(boards)
+})
+
+app.get('/boards/:boardId/lists/:listId/cards', (req, res) => {
+  res.json(boards[req.params.boardId].lists[req.params.listId].cards)
+})
+
+app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
+  console.log(req.params.listId)
+  saveCard(req.params.boardId, req.params.listId, req.body)
   res.status(200).json(boards)
 })
 

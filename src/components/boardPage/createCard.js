@@ -1,22 +1,22 @@
 import React from 'react';
 
-class CreateSubCard extends React.Component {
+class CreateCard extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      subCard: "",
+      card: "",
       isToggled: false
     }
     this.handleInput = this.handleInput.bind(this)
     this.toggle = this.toggle.bind(this)
-    this.addSubCard = this.addSubCard.bind(this)
+    this.addCard = this.addCard.bind(this)
     this.handleEnter = this.handleEnter.bind(this)
   }
 
   handleInput(e) {
     this.setState({
-      subCard: e.target.value
+      card: e.target.value
     })
   }
 
@@ -27,20 +27,20 @@ class CreateSubCard extends React.Component {
   }
 
 
-  addSubCard() {
+  addCard() {
     const newCard = {
-      subCard: this.state.subCard
+      card: this.state.card
     }
-    this.props.addSubCard(this.props.boardId, this.props.listId, newCard)
+    this.props.addCard(this.props.boardId, this.props.listId, newCard)
     this.setState({
-      subCard: "",
+      card: "",
       isToggled: false
     })
   }
 
   handleEnter(e) {
     if (e.charCode === 13) {
-      this.addSubCard()
+      this.addCard()
     }
   }
 
@@ -49,8 +49,8 @@ class CreateSubCard extends React.Component {
     const newCard = 
       <div className="card card-inverse card-danger">
         <div className="card-block">
-          <input placeholder="Add a card..." className="form-control" value={this.state.subCard} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
-          <button className="btn btn-success savebtn-spacing" onClick={this.addSubCard}>Add</button>
+          <input placeholder="Add a card..." className="form-control" value={this.state.card} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
+          <button className="btn btn-success savebtn-spacing" onClick={this.addCard}>Add</button>
         </div>
       </div>
 
@@ -70,4 +70,4 @@ class CreateSubCard extends React.Component {
   }
 }
 
-export default CreateSubCard;
+export default CreateCard;

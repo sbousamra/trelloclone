@@ -30,7 +30,7 @@ class CreateList extends React.Component {
   addList() {
     const newList = {
       name: this.state.name,
-      subCards: {}
+      cards: {}
     }
     this.props.addList(this.props.boardId, newList)
     this.setState({
