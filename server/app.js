@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 
 var boards = {
   tutorialBoard: {
-    name: "Tutorial Board (Start Here!)", important: true
+    name: "Tutorial Board (Start Here!)", lists: {}, important: true
   }
 }
 
@@ -24,7 +24,7 @@ function saveBoard(board) {
 }
 
 function saveList(boardId, list) {
-  lodash.extend(boards.boardId.lists, {[randId()]: list})
+  lodash.extend(boards[boardId].lists, {[randId()]: list})
 }
 
 // Always return the main index.html, so react-router render the route in the client
