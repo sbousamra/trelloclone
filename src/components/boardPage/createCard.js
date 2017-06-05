@@ -29,11 +29,11 @@ class CreateCard extends React.Component {
 
   addCard() {
     const newCard = {
-      card: this.state.card
+      name: this.state.card
     }
     this.props.addCard(this.props.boardId, this.props.listId, newCard)
     this.setState({
-      card: "",
+      name: "",
       isToggled: false
     })
   }
