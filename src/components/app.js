@@ -45,8 +45,15 @@ class App extends React.Component {
     })
   }
 
-  // addSubCard(listId, subCard) {
-  // }
+  addSubCard(boardId, listId, subCard) {
+    axios.post('/boards/' + boardId + '/lists/' + listId + '/subCards', subCard).then((res) => {
+      this.setState({
+        boards: res.data
+      })
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
 
   // handleDelete(e, id) {
   //   this.setState({boards: delete this.state.boards.id})
