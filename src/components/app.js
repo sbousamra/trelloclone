@@ -45,16 +45,7 @@ class App extends React.Component {
     })
   }
 
-  // addSubCard(listId, subCard) {
-  // }
-
-  // handleDelete(e, id) {
-  //   this.setState({boards: delete this.state.boards.id})
-  // }
-
   render() {
-    console.log(JSON.stringify(this.state))
-
     return (
       <Router>
         <div>
