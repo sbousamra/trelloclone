@@ -18,8 +18,8 @@ class Board extends React.Component {
 
         const cards = lodash.map(list.cards, (card, cardId) => {
           return (
-            <div key={cardId} className="row">
-              <button className="btn btn-danger btn-block">{card.name}</button>
+            <div key={cardId}>
+              <button className="btn btn-info btn-block">{card.name}</button>
             </div>
           )
         })
