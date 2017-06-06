@@ -6,7 +6,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="boardpage-bgcolor">
         <TitleBar/>
         <div className="container-fluid">
           <BoardNameList boards={this.props.boards} addBoard={this.props.addBoard}/>

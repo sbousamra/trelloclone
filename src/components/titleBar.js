@@ -3,16 +3,16 @@ import React from 'react';
 class TitleBar extends React.Component {
   render() {
     return (
-      <div className="container-fluid bg-primary">
-        <nav className="navbar navbar-toggleable-md navbar-inverse bg-primary">
+      <div className="container-fluid titlebar-bgcolor">
+        <nav className="navbar navbar-toggleable-md navbar-inverse titlebar-bgcolor">
         <div className="col-1">
-          <a className="navbar-brand" href="#"><button className="btn btn-primary btn-outline-info">Boards</button></a>
+          <a className="navbar-brand" href="#"><button className="btn btn-primary btn-outline-warning">Boards</button></a>
         </div>
         <div className="col-4">
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <form className="form-inline my-2 my-lg-0">
               <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              <button className="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
             </form>
           </div>
         </div>
@@ -23,10 +23,10 @@ class TitleBar extends React.Component {
           </div>
           <div className="col-1">
             <ul className="navbar-nav">
-              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">+</button></a>
-              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">Sebastian Bou-Samra</button></a>
-              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">i</button></a>
-              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">bell</button></a>
+              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-warning">+</button></a>
+              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-warning">Sebastian Bou-Samra</button></a>
+              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-warning">i</button></a>
+              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-warning">bell</button></a>
             </ul>
           </div>
         </nav>

@@ -47,7 +47,7 @@ class CreateCard extends React.Component {
   render() {
 
     const newCard = 
-      <div className="card card-inverse card-danger">
+      <div className="card card-inverse">
         <div className="card-block">
           <input placeholder="Add a card..." className="form-control" value={this.state.card} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
           <button className="btn btn-success savebtn-spacing" onClick={this.addCard}>Add</button>
@@ -57,7 +57,7 @@ class CreateCard extends React.Component {
     if (!this.state.isToggled) {
       return (
         <div>
-          <button className="btn btn-secondary btn-lg btn-block" onClick={this.toggle}>Add a card...</button>
+          <button className="btn btn-secondary btn-block" onClick={this.toggle}>Add a card...</button>
         </div>
       )
     } else {

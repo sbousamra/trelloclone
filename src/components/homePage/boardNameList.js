@@ -11,11 +11,12 @@ class BoardNameList extends React.Component {
 
       const buttonClassNames = classNames({
         "btn": true,
-        "btn-primary": true,
+        "boardpage-listbgcolor": true,
         "btn-lg": true,
         "btn-block": true,
         "btn-board": true,
-        "btn-info": board.important
+        "font-white": true,
+        "boardpage-cardbgcolor": board.important
       })
 
       return (

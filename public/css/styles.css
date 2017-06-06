@@ -11,22 +11,68 @@
   margin-bottom: 15px;
 }
 
+.titlebar-bgcolor {
+  background-color: SlateBlue;
+}
+
 .board-col {
   margin-top: 30px;
 }
 
 .savebtn-spacing {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .boardpage-bgcolor {
-  background-color: black;
+  background-color: RosyBrown;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.boardpage-namecolor {
-  color: white;
+.boardpage-createlistspacing {
+  margin-top: -10px;
 }
 
-.boardpage-cardpadding {
-  padding: -20px;
+.boardpage-listnamespacing {
+  margin-bottom: 20px;
+}
+
+.boardpage-listbgcolor {
+  background-color: DarkSalmon;
+}
+
+.boardpage-listfontcolor {
+  color: black;
+}
+
+.boardpage-listborder {
+  border-style: solid;
+  border-color: Black;
+  border-radius: 6px;
+}
+
+.boardpage-cardbgcolor {
+  background-color: lavender;
+}
+
+.boardpage-cardborder {
+  border-style: solid;
+  border-color: DarkSalmon;
+  border-radius: 5px;
+}
+
+.boardpage-cardspacing {
+  margin-bottom: 10px;
+}
+
+.boardpage-cardtextcolor {
+  color: black;
+}
+
+.font-white {
+  color: black;
+  font-family: Chalkboard;
 }
