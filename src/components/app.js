@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:9000/boards').then((res) => {
+    axios.get('/boards').then((res) => {
       this.setState({
         boards: res.data
       })
