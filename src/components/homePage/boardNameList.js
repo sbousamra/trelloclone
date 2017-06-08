@@ -16,12 +16,13 @@ class BoardNameList extends React.Component {
         "btn-block": true,
         "btn-board": true,
         "font-white": true,
+        "btn-hoverdarken": true,
         "boardpage-cardbgcolor": board.important
       })
 
       return (
         <div key={id} className="col-3 board-col">
-          <a href={"/boards/" + id}>
+          <a className="link-nounderline" href={"/boards/" + id}>
             <button className={buttonClassNames}>{board.name}</button>
           </a>
         </div>

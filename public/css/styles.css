@@ -4,6 +4,14 @@
   height: 150px;
 }
 
+.btn-hoverdarken:hover {
+  opacity:0.7;
+}
+
+.link-nounderline:hover {
+  text-decoration: none;
+}
+
 /* titlebar styling */
 
 .titlebar-spacing {
@@ -25,8 +33,8 @@
 
 .boardpage-bgcolor {
   background-color: RosyBrown;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
