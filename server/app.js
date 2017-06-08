@@ -65,7 +65,7 @@ app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
   res.status(200).json(boards)
 })
 
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}!`);
