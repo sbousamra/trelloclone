@@ -80,7 +80,10 @@
   color: black;
 }
 
-.font-white {
+.font-black {
   color: black;
+}
+
+.font-chalkboard {
   font-family: Chalkboard;
 }

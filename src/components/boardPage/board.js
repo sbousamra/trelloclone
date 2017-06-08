@@ -20,7 +20,7 @@ class Board extends React.Component {
           return (
             <div className="card card-inverse boardpage-cardspacing boardpage-cardbgcolor">
               <div className="card-block boardpage-cardbgcolor">
-                <p className="font-white">
+                <p className="font-black">
                   {card.name}
                 </p>
               </div>
@@ -31,7 +31,7 @@ class Board extends React.Component {
         const newList = 
           <div className="card card-inverse boardpage-listborder">
             <div className="card-block boardpage-listbgcolor boardpage-cardborder">
-              <h4 className="font-white text-center boardpage-listnamespacing"> {list.name} </h4>
+              <h4 className="font-black font-chalkboard text-center boardpage-listnamespacing"> {list.name} </h4>
               {cards}
               <CreateCard boardId={boardId} listId={listId} addCard={this.props.addCard}/>
             </div>

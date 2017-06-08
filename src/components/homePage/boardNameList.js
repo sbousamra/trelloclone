@@ -15,7 +15,8 @@ class BoardNameList extends React.Component {
         "btn-lg": true,
         "btn-block": true,
         "btn-board": true,
-        "font-white": true,
+        "font-black": true,
+        "font-chalkboard": true,
         "btn-hoverdarken": true,
         "boardpage-cardbgcolor": board.important
       })
