@@ -47,7 +47,7 @@ class Board extends React.Component {
 
       return (
         <div className="boardpage-bgcolor">
-          <TitleBar/>
+          <TitleBar userSignup={this.props.userSignup}/>
           <div className="container-fluid board-col">
             <div className="row">
             {lists}
