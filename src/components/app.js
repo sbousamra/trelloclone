@@ -63,7 +63,7 @@ class App extends React.Component {
   }
 
   userSignup(userAndPass) {
-    axios.post('/boards/', userAndPass).then((res) => {
+    axios.post('/users', userAndPass).then((res) => {
       this.setState({
         boards: res.data
       })

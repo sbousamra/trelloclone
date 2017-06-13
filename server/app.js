@@ -8,10 +8,20 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 app.use(bodyParser.json())
 
+var users = {}
+
 var boards = {
   tutorialBoard: {
     name: "Tutorial Board (Start Here!)", lists: {}, important: true
   }
+}
+
+function addUser(user, password) {
+  lodash.extend(users, {[user]: {password, boards}})
+}
+
+function lookupUser(user, pass) {
+  lodash.has(users, [user, pass])
 }
 
 function randId() {
@@ -63,6 +73,15 @@ app.get('/boards/:boardId/lists/:listId/cards', (req, res) => {
 app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
   saveCard(req.params.boardId, req.params.listId, req.body)
   res.status(200).json(boards)
+})
+
+app.get('/users', (req, res) => {
+  res.json(users)
+})
+
+app.post('/users', (req, res) => {
+  console.log(users)
+  addUser(req.body.username, req.body.password)
 })
 
 var PORT = process.env.PORT || 9000;

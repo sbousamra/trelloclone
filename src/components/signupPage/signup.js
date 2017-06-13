@@ -7,7 +7,7 @@ class Signup extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: "",
+      username: "",
       password: ""
     }
     this.userSignup = this.userSignup.bind(this)
@@ -22,7 +22,7 @@ class Signup extends React.Component {
     }
     this.props.userSignup(newUser)
     this.setState({
-      user: "",
+      username: "",
       password: ""
     })
   }
