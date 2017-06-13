@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Signup extends React.Component {  
+class Login extends React.Component {  
 
   constructor() {
     super();
@@ -8,17 +8,17 @@ class Signup extends React.Component {
       username: "",
       password: ""
     }
-    this.userSignup = this.userSignup.bind(this)
+    this.userLogin = this.userLogin.bind(this)
     this.handleUserInput = this.handleUserInput.bind(this)
     this.handlePasswordInput = this.handlePasswordInput.bind(this)
   }
 
-  userSignup() {
-    const newUser = {
+  userLogin() {
+    const existingUser = {
       username: this.state.user,
       password: this.state.password
     }
-    this.props.userSignup(newUser)
+    this.props.userLogin(existingUser)
     this.setState({
       username: "",
       password: ""
@@ -42,10 +42,10 @@ class Signup extends React.Component {
       <div>
         <input className="form-control mr-sm-2" type="text" placeholder="Username" onChange={this.handleUserInput}/>
         <input className="form-control mr-sm-2" type="text" placeholder="Password" onChange={this.handlePasswordInput}/>
-        <button type="submit" onClick={this.userSignup}>Submit</button>
+        <button type="submit" onClick={this.userLogin}>Submit</button>
       </div>
     )
   }
 }
 
-export default Signup;
+export default Login;

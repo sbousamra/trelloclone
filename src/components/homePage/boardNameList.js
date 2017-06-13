@@ -28,7 +28,7 @@ class BoardNameList extends React.Component {
           </a>
         </div>
       )
-    }.bind(this))
+    })
 
     return (
       <div className="row">

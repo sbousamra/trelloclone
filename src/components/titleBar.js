@@ -2,38 +2,6 @@ import React from 'react';
 
 class TitleBar extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      user: "",
-      password: ""
-    }
-  }
-
-  userSignup() {
-    const newUser = {
-      username: this.state.user,
-      password: this.state.password
-    }
-    this.props.userSignup(newUser)
-    this.setState({
-      user: "",
-      password: ""
-    })
-  }
-
-  handleUserInput(e) {
-    this.setState({
-      user: e.target.value
-    })
-  }
-
-  handlePasswordInput(e) {
-    this.setState({
-      password: e.target.value
-    })
-  }
-
   render() {
 
     const boardsDropdown =
@@ -68,7 +36,7 @@ class TitleBar extends React.Component {
           <div className="col-md-auto">
             <ul className="navbar-nav">
               <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-warning">+</button></a>
-              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">Sign Up</button></a>
+              <a className="nav-link" href="/signup"><button className="btn btn-primary btn-outline-info">Sign Up</button></a>
               <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">Login</button></a>
             </ul>
           </div>

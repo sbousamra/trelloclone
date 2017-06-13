@@ -3,7 +3,6 @@ import TitleBar from '../titleBar';
 import CreateList from './createList';
 import CreateCard from './createCard';
 import * as lodash from 'lodash';
-import axios from 'axios'
 
 class Board extends React.Component {
 
