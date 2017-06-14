@@ -12,7 +12,7 @@ class App extends React.Component {
     super();
     this.state = {
       boards: {},
-      signedIn: false
+      isLoggedIn: false
     }
     this.addBoard = this.addBoard.bind(this)
     this.addList = this.addList.bind(this)
@@ -22,13 +22,13 @@ class App extends React.Component {
     this.userLogin = this.userLogin.bind(this)
   }
 
-  componentDidMount() {
-    axios.get('/users').then((res) => {
-      this.setState({
-        boards: res.data
-      })
-    })
-  }
+  // componentDidMount() {
+  //   axios.get('/boards').then((res) => {
+  //     this.setState({
+  //       boards: res.data
+  //     })
+  //   })
+  // }
 
   addBoard(user, board) {
     axios.post('/' + user + '/boards', board).then((res) => {
@@ -73,7 +73,8 @@ class App extends React.Component {
   userLogin(userAndPass) {
     axios.post('/login', userAndPass).then((res) => {
       this.setState({
-        boards: res.data
+        boards: res.data,
+        isLoggedIn: true
       })
     }).catch((error) => {
       console.log(error)
@@ -81,10 +82,11 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <Router>
         <div>
-          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} signedIn={this.state.signedIn} addBoard={this.addBoard}/>}/>
+          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} isLoggedIn={this.state.isLoggedIn} addBoard={this.addBoard}/>}/>
           <Route path="/boards/:boardId" component={(props) => 
             <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup}/>}/>
           <Route path="/signup" component={(props) => <Signup {...props} userSignup={this.userSignup}/>}/>

@@ -5,7 +5,7 @@ import BoardNameList from './boardNameList';
 class Home extends React.Component {
 
   render() {
-    if (this.props.signedIn === true) {
+    if (this.props.isLoggedIn === true) {
       return (
         <div className="boardpage-bgcolor">
           <TitleBar/>
