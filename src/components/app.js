@@ -11,8 +11,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      boards: {},
-      isLoggedIn: false
+      boards: {}
     }
     this.addBoard = this.addBoard.bind(this)
     this.addList = this.addList.bind(this)
@@ -73,8 +72,7 @@ class App extends React.Component {
   userLogin(userAndPass) {
     axios.post('/login', userAndPass).then((res) => {
       this.setState({
-        boards: res.data,
-        isLoggedIn: true
+        boards: res.data
       })
     }).catch((error) => {
       console.log(error)
@@ -87,8 +85,7 @@ class App extends React.Component {
       <Router>
         <div>
           <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} isLoggedIn={this.state.isLoggedIn} addBoard={this.addBoard}/>}/>
-          <Route path="/boards/:boardId" component={(props) => 
-            <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup}/>}/>
+          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup}/>}/>
           <Route path="/signup" component={(props) => <Signup {...props} userSignup={this.userSignup}/>}/>
           <Route path="/login" component={(props) => <Login {...props} userLogin={this.userLogin}/>}/>
         </div>

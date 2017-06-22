@@ -31,17 +31,13 @@ function addUser(user, password) {
   })
 }
 
-function verifyUser(user, pass) {
-  if (users.hasOwnProperty(user)) {
-    if (users[user].password === pass) {
-      return true
-    }
-  } 
+function verifyUser(username, password) {
+  return users.hasOwnProperty(username) && users[username].password === password
 }
 
-function storeToken(user, token) {
-  lodash.extend(users.tokens, {[user]: token})
-}
+// function storeToken(user, token) {
+//   lodash.extend(users.tokens, {[user]: token})
+// }
 
 // function getUserData(token) {
 //   if (users.hasOwnProperty(token)) {
@@ -105,14 +101,10 @@ app.post('/signup', (req, res) => {
 
 app.post('/login', (req, res) => {
   var token = randId()
-  console.log(req.cookies)
   console.log(users)
-
   if (verifyUser(req.body.username, req.body.password)) {
-    res.status(200).cookie('testing', token)
-    storeToken(req.body.username, token)
-  } else {
-    res.status(401).send("Not a valid username and/or password")
+    console.log("Success")
+    res.status(200).cookie("token", token).end()
   }
 })
 
