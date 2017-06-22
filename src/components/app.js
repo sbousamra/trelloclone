@@ -21,16 +21,26 @@ class App extends React.Component {
     this.userLogin = this.userLogin.bind(this)
   }
 
-  // componentDidMount() {
-  //   axios.get('/boards').then((res) => {
-  //     this.setState({
-  //       boards: res.data
-  //     })
-  //   })
-  // }
+  componentDidMount() {
+    axios.get('/boards').then((res) => {
+      this.setState({
+        boards: res.data
+      })
+    })
+  }
 
-  addBoard(user, board) {
-    axios.post('/' + user + '/boards', board).then((res) => {
+  addBoard(board) {
+    axios.post('/boards', board).then((res) => {
+      this.setState({
+        boards: res.data
+      })
+    }).catch((error) => {
+      console.log("Not logged in")
+    })
+  }
+
+  addList(boardId, list) {
+    axios.post('/boards/' + boardId + '/lists', list).then((res) => {
       this.setState({
         boards: res.data
       })
@@ -39,18 +49,8 @@ class App extends React.Component {
     })
   }
 
-  addList(user, boardId, list) {
-    axios.post('/' + user + '/boards/' + boardId + '/lists', list).then((res) => {
-      this.setState({
-        boards: res.data
-      })
-    }).catch((error) => {
-      console.log(error)
-    })
-  }
-
-  addCard(user, boardId, listId, Card) {
-    axios.post('/' + user + '/boards/' + boardId + '/lists/' + listId + '/cards', Card).then((res) => {
+  addCard(boardId, listId, Card) {
+    axios.post('/boards/' + boardId + '/lists/' + listId + '/cards', Card).then((res) => {
       this.setState({
         boards: res.data
       })

@@ -35,25 +35,27 @@ function verifyUser(username, password) {
   return users.hasOwnProperty(username) && users[username].password === password
 }
 
-// function storeToken(user, token) {
-//   lodash.extend(users.tokens, {[user]: token})
-// }
-
-// function getUserData(token) {
-//   if (users.hasOwnProperty(token)) {
-//     users[lodash.findKey(users, token)].boards
-//   }
-// }
-
-function saveBoard(user, board) {
-  lodash.extend(users.user.boards, {[randId()]: board})
+function storeToken(username, token) {
+  lodash.extend(users.tokens, {[token]: username})
 }
 
-function saveList(user, boardId, list) {
+function isAuthenticated(req, res) {
+  if (!lodash.isEmpty(users.tokens) && users.tokens.hasOwnProperty(req.cookies.token)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+function saveBoard(boards, board) {
+  lodash.extend(boards, {[randId()]: board})
+}
+
+function saveList(boards, boardId, list) {
   lodash.extend(users.user.boards[boardId].lists, {[randId()]: list})
 }
 
-function saveCard(user, boardId, listId, card) {
+function saveCard(boards, boardId, listId, card) {
   lodash.extend(users.user.boards[boardId].lists[listId].cards, {[randId()]: card})
 }
 
@@ -61,15 +63,21 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html')); 
 });
 
-// app.get('/boards', (req, res) => {
-//   console.log(users.hasOwnProperty(req.cookies))
-//   console.log(req.cookies)
-//   res.json(getUserData(req.cookies))
-// })
+app.get('/boards', (req, res) => {
+  if (isAuthenticated(req, res)) {
+    return res.status(200).json(users[users.tokens[req.cookies.token]].boards)
+  } else {
+    return res.status(401).send("Make an account or log in!")
+  }
+})
 
 app.post('/boards', (req, res) => {
-  saveBoard(req.params.user, req.body)
-  res.status(200).json(users[req.params.user])
+  if (isAuthenticated(req, res)) {
+    saveBoard(users[users.tokens[req.cookies.token]].boards, req.body)
+    res.status(200).json(users[users.tokens[req.cookies.token]].boards)
+  } else {
+    res.status(401).send("Make an account or log in!")
+  }
 })
 
 app.get('/boards/:boardId', (req, res) => {
@@ -96,15 +104,16 @@ app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
 
 app.post('/signup', (req, res) => {
   addUser(req.body.username, req.body.password)
-  res.status(200).json(users)
+  res.status(200).end()
 })
 
 app.post('/login', (req, res) => {
   var token = randId()
-  console.log(users)
   if (verifyUser(req.body.username, req.body.password)) {
-    console.log("Success")
     res.status(200).cookie("token", token).end()
+    storeToken(req.body.username, token)
+  } else {
+    res.status(401).send("You need to log in!")
   }
 })
 
