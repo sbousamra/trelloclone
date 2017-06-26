@@ -37,7 +37,7 @@ class TitleBar extends React.Component {
             <ul className="navbar-nav">
               <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-warning">+</button></a>
               <a className="nav-link" href="/signup"><button className="btn btn-primary btn-outline-info">Sign Up</button></a>
-              <a className="nav-link" href="#"><button className="btn btn-primary btn-outline-info">Login</button></a>
+              <a className="nav-link" href="/login"><button className="btn btn-primary btn-outline-info">Login</button></a>
             </ul>
           </div>
         </nav>

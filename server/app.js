@@ -32,7 +32,11 @@ function addUser(user, password) {
 }
 
 function verifyUser(username, password) {
-  return users.hasOwnProperty(username) && users[username].password === password
+  if (!lodash.isEmpty(users)) {
+    return users.hasOwnProperty(username) && users[username].password === password
+  } else {
+    return false
+  }
 }
 
 function storeToken(username, token) {
@@ -104,7 +108,7 @@ app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
 
 app.post('/signup', (req, res) => {
   addUser(req.body.username, req.body.password)
-  res.status(200).end()
+  res.status(200).send("Welcome to Bass's Trello!")
 })
 
 app.post('/login', (req, res) => {
