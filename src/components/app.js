@@ -92,7 +92,7 @@ class App extends React.Component {
       <Router>
         <div>
           <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard} loggedin={this.state.loggedin} handleLogout={this.handleLogout}/>}/>
-          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup}/>}/>
+          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} loggedin={this.state.loggedin} handleLogout={this.handleLogout}/>}/>
           <Route path="/signup" component={(props) => <Signup {...props} userSignup={this.userSignup}/>}/>
           <Route path="/login" component={(props) => (
             this.state.loggedin

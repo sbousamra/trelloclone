@@ -7,7 +7,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <TitleBar loggedin={this.props.loggedin} handleLogout={this.props.handleLogout}/>
+        <TitleBar boards={this.props.boards} loggedin={this.props.loggedin} handleLogout={this.props.handleLogout}/>
         <div className="container-fluid">
           <BoardNameList boards={this.props.boards} addBoard={this.props.addBoard}/>
         </div>

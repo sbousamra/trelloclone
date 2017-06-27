@@ -1,4 +1,5 @@
 import React from 'react';
+import lodash from 'lodash';
 
 class TitleBar extends React.Component {
 
@@ -17,13 +18,21 @@ class TitleBar extends React.Component {
 
   render() {
 
+    const boardsToLinks = lodash.map(this.props.boards, function(board, id) {
+      return (
+        <div key={id}>
+          <a className="dropdown-item">{board.name}</a>
+        </div>
+      )
+    })
+
     const boardsDropdown =
       <div className="dropdown"> 
         <button className="btn btn-primary btn-outline-info dropdown-toggle" id="boardsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Boards
         </button>
         <div className="dropdown-menu" aria-labelledby="boardsDropdown">
-          <a className="dropdown-item">Test</a>
+          {boardsToLinks}
         </div>
       </div>
 

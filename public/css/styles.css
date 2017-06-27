@@ -19,10 +19,6 @@
   margin-bottom: 15px;
 }
 
-.titlebar-bgcolor {
-  background-color: SlateBlue;
-}
-
 .board-col {
   margin-top: 30px;
 }
@@ -50,7 +46,7 @@
 }
 
 .boardpage-listbgcolor {
-  background-color: lightgray;
+  background-color: #E2E4E6;
 }
 
 .boardpage-cardborder {
