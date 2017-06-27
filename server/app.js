@@ -47,12 +47,12 @@ function saveBoard(boards, board) {
   lodash.extend(boards, {[randId()]: board})
 }
 
-function saveList(boards, boardId, list) {
-  lodash.extend(users.user.boards[boardId].lists, {[randId()]: list})
+function saveList(lists, list) {
+  lodash.extend(lists, {[randId()]: list})
 }
 
-function saveCard(boards, boardId, listId, card) {
-  lodash.extend(users.user.boards[boardId].lists[listId].cards, {[randId()]: card})
+function saveCard(cards, card) {
+  lodash.extend(cards, {[randId()]: card})
 }
 
 app.get('/', (req, res) => {
@@ -80,22 +80,22 @@ app.get('/boards/:boardId', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 })
 
-app.get('/boards/:boardId/lists', (req, res) => {
-  res.json(users[req.params.user].boards[req.params.boardId].lists)
-})
-
 app.post('/boards/:boardId/lists', (req, res) => {
-  saveList(req.params.user, req.params.boardId, req.body)
-  res.status(200).json(users[req.params.user].boards)
-})
-
-app.get('/boards/:boardId/lists/:listId/cards', (req, res) => {
-  res.json(users[req.params.user].boards[req.params.boardId].lists[req.params.listId].cards)
+  if (isAuthenticated(req, res)) {
+    saveList(users[users.tokens[req.cookies.token]].boards[req.params.boardId].lists, req.body)
+    res.status(200).json(users[users.tokens[req.cookies.token]].boards)
+  } else {
+    res.status(401).send("Make an account or log in!")
+  }
 })
 
 app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
-  saveCard(req.params.user, req.params.boardId, req.params.listId, req.body)
-  res.status(200).json(users[req.params.user].boards)
+  if (isAuthenticated(req, res)) {
+    saveCard(users[users.tokens[req.cookies.token]].boards[req.params.boardId].lists[req.params.listId].cards, req.body)
+    res.status(200).json(users[users.tokens[req.cookies.token]].boards)
+  } else {
+    res.status(401).send("Make an account or log in!")
+  }
 })
 
 app.post('/signup', (req, res) => {

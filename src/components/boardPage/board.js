@@ -17,20 +17,22 @@ class Board extends React.Component {
 
         const cards = lodash.map(list.cards, (card, cardId) => {
           return (
-            <div className="card card-inverse boardpage-cardspacing">
-              <div className="card-block boardpage-cardbgcolor">
-                <p className="font-black">
-                  {card.name}
-                </p>
+            <div key={cardId}>
+              <div className="card card-inverse boardpage-cardspacing">
+                <div className="card-block">
+                  <p className="font-black">
+                    {card.name}
+                  </p>
+                </div>
               </div>
             </div>
           )
         })
 
         const newList = 
-          <div className="card card-inverse">
+          <div className="card card-inverse boardpage-listbgcolor">
             <div className="card-block">
-              <h4 className="text-center boardpage-listnamespacing"> {list.name} </h4>
+              <h4 className="text-center boardpage-listnamespacing font-black"> {list.name} </h4>
               {cards}
               <CreateCard boardId={boardId} listId={listId} addCard={this.props.addCard}/>
             </div>

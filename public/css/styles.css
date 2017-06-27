@@ -31,15 +31,6 @@
   margin-top: 10px;
 }
 
-.boardpage-bgcolor {
-  background-color: RosyBrown;
-  height: 100vh;
-  width: 100vw;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .boardpage-createlistspacing {
   margin-top: -10px;
 }
@@ -58,6 +49,10 @@
   background-color: lavender;
 }
 
+.boardpage-listbgcolor {
+  background-color: lightgray;
+}
+
 .boardpage-cardborder {
   border-style: solid;
   border-color: DarkSalmon;
@@ -66,4 +61,8 @@
 
 .boardpage-cardspacing {
   margin-bottom: 10px;
+}
+
+.font-black {
+  color: black;
 }
