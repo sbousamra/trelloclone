@@ -6,8 +6,8 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="boardpage-bgcolor">
-        <TitleBar/>
+      <div>
+        <TitleBar loggedin={this.props.loggedin} handleLogout={this.props.handleLogout}/>
         <div className="container-fluid">
           <BoardNameList boards={this.props.boards} addBoard={this.props.addBoard}/>
         </div>

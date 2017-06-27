@@ -47,9 +47,11 @@ class CreateList extends React.Component {
 
   render() {
     const newCard = 
-      <div className="card card-inverse boardpage-cardbgcolor">
+      <div className="card boardpage-cardbgcolor">
         <div className="card-block">
+          <div className="text-center"><h5 className="card-title boardpage-cardbgcolor">What needs to be done?</h5></div>
           <input placeholder="Add a list..." className="form-control" value={this.state.name} onChange={this.handleInput} onKeyPress={this.handleEnter}/>
+          &nbsp;
           <button className="btn btn-success savebtn-spacing" onClick={this.addList}>Save</button>
         </div>
       </div>

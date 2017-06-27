@@ -48,14 +48,6 @@
   margin-bottom: 20px;
 }
 
-.boardpage-listbgcolor {
-  background-color: DarkSalmon;
-}
-
-.boardpage-listfontcolor {
-  color: black;
-}
-
 .boardpage-listborder {
   border-style: solid;
   border-color: Black;
@@ -74,16 +66,4 @@
 
 .boardpage-cardspacing {
   margin-bottom: 10px;
-}
-
-.boardpage-cardtextcolor {
-  color: black;
-}
-
-.font-black {
-  color: black;
-}
-
-.font-chalkboard {
-  font-family: Chalkboard;
 }

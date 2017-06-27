@@ -17,9 +17,10 @@ class App extends React.Component {
     this.addBoard = this.addBoard.bind(this)
     this.addList = this.addList.bind(this)
     this.addCard = this.addCard.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
     this.userSignup = this.userSignup.bind(this)
     this.userLogin = this.userLogin.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   componentDidMount() {
@@ -60,10 +61,6 @@ class App extends React.Component {
     })
   }
 
-  handleDelete(e, id) {
-    this.setState({boards: delete this.state.boards.id})
-  }
-
   userSignup(userAndPass) {
     axios.post('/signup', userAndPass).then().catch((error) => {
       console.log(error)
@@ -81,12 +78,20 @@ class App extends React.Component {
     })
   }
 
+  handleDelete(e, id) {
+    this.setState({boards: delete this.state.boards.id})
+  }
+
+  handleLogout() {
+    this.setState({loggedin: false})
+  }
+
   render() {
     console.log(this.state)
     return (
       <Router>
         <div>
-          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard}/>}/>
+          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard} loggedin={this.state.loggedin} handleLogout={this.handleLogout}/>}/>
           <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup}/>}/>
           <Route path="/signup" component={(props) => <Signup {...props} userSignup={this.userSignup}/>}/>
           <Route path="/login" component={(props) => (
