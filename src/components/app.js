@@ -3,7 +3,7 @@ import Home from './homePage/home';
 import Board from './boardPage/board';
 import Signup from './signupPage/signup';
 import Login from './loginPage/login';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -11,7 +11,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      boards: {}
+      boards: {},
+      loggedin: false
     }
     this.addBoard = this.addBoard.bind(this)
     this.addList = this.addList.bind(this)
@@ -72,7 +73,8 @@ class App extends React.Component {
   userLogin(userAndPass) {
     axios.post('/login', userAndPass).then((res) => {
       this.setState({
-        boards: res.data
+        boards: res.data,
+        loggedin: true
       })
     }).catch((error) => {
       console.log(error)
@@ -84,10 +86,14 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} isLoggedIn={this.state.isLoggedIn} addBoard={this.addBoard}/>}/>
+          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard}/>}/>
           <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup}/>}/>
           <Route path="/signup" component={(props) => <Signup {...props} userSignup={this.userSignup}/>}/>
-          <Route path="/login" component={(props) => <Login {...props} userLogin={this.userLogin}/>}/>
+          <Route path="/login" component={(props) => (
+            this.state.loggedin
+            ? <Redirect to="/"/> 
+            : <Login {...props} userLogin={this.userLogin}/>
+          )}/>
         </div>
       </Router>
     )

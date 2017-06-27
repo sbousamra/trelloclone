@@ -32,11 +32,7 @@ function addUser(user, password) {
 }
 
 function verifyUser(username, password) {
-  if (!lodash.isEmpty(users)) {
-    return users.hasOwnProperty(username) && users[username].password === password
-  } else {
-    return false
-  }
+  return (!lodash.isEmpty(users) && users.hasOwnProperty(username) && users[username].password === password)
 }
 
 function storeToken(username, token) {
@@ -44,11 +40,7 @@ function storeToken(username, token) {
 }
 
 function isAuthenticated(req, res) {
-  if (!lodash.isEmpty(users.tokens) && users.tokens.hasOwnProperty(req.cookies.token)) {
-    return true
-  } else {
-    return false
-  }
+  return (!lodash.isEmpty(users.tokens) && users.tokens.hasOwnProperty(req.cookies.token))
 }
 
 function saveBoard(boards, board) {
@@ -109,6 +101,7 @@ app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
 app.post('/signup', (req, res) => {
   addUser(req.body.username, req.body.password)
   res.status(200).send("Welcome to Bass's Trello!")
+  console.log(users)
 })
 
 app.post('/login', (req, res) => {
