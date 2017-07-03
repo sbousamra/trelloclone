@@ -2,7 +2,6 @@ import React from 'react';
 import Home from './homePage/home';
 import Board from './boardPage/board';
 import Signup from './signupPage/signup';
-import Login from './loginPage/login';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -19,14 +18,15 @@ class App extends React.Component {
     this.addCard = this.addCard.bind(this)
     this.userSignup = this.userSignup.bind(this)
     this.userLogin = this.userLogin.bind(this)
+    this.userLogout = this.userLogout.bind(this)
     this.handleDelete = this.handleDelete.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
   }
 
   componentDidMount() {
     axios.get('/boards').then((res) => {
       this.setState({
-        boards: res.data
+        boards: res.data,
+        loggedin: true
       })
     })
   }
@@ -70,35 +70,28 @@ class App extends React.Component {
   userLogin(userAndPass) {
     axios.post('/login', userAndPass).then((res) => {
       this.setState({
-        boards: res.data,
-        loggedin: true
+        boards: res.data
       })
     }).catch((error) => {
       console.log(error)
     })
   }
 
+  userLogout() {
+    axios.get('/logout').then()
+  }
+
   handleDelete(e, id) {
     this.setState({boards: delete this.state.boards.id})
   }
 
-  handleLogout() {
-    this.setState({loggedin: false})
-  }
-
   render() {
-    console.log(this.state)
     return (
       <Router>
         <div>
-          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard} loggedin={this.state.loggedin} handleLogout={this.handleLogout}/>}/>
-          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} loggedin={this.state.loggedin} handleLogout={this.handleLogout}/>}/>
+          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>}/>
+          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>}/>
           <Route path="/signup" component={(props) => <Signup {...props} userSignup={this.userSignup}/>}/>
-          <Route path="/login" component={(props) => (
-            this.state.loggedin
-            ? <Redirect to="/"/> 
-            : <Login {...props} userLogin={this.userLogin}/>
-          )}/>
         </div>
       </Router>
     )

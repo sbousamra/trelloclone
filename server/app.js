@@ -101,7 +101,6 @@ app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
 app.post('/signup', (req, res) => {
   addUser(req.body.username, req.body.password)
   res.status(200).send("Welcome to Bass's Trello!")
-  console.log(users)
 })
 
 app.post('/login', (req, res) => {
@@ -112,6 +111,10 @@ app.post('/login', (req, res) => {
   } else {
     res.status(401).send("You need to log in!")
   }
+})
+
+app.get('/logout', (req,res) => {
+  res.status(200).cookie("token", "deleting", {expires: new Date(0)}).end()
 })
 
 var PORT = process.env.PORT || 9000;

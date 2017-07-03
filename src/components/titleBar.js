@@ -5,14 +5,82 @@ class TitleBar extends React.Component {
 
   constructor() {
     super();
+    this.state = {
+      username: "",
+      password: ""
+    }
+    this.userLogin = this.userLogin.bind(this)
+    this.handleUserInput = this.handleUserInput.bind(this)
+    this.handlePasswordInput = this.handlePasswordInput.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
+  } 
+
+  userLogin() {
+    const existingUser = {
+      username: this.state.user,
+      password: this.state.password
+    }
+    this.props.userLogin(existingUser)
+    this.setState({
+      username: "",
+      password: ""
+    })
+  }
+
+  handleUserInput(e) {
+    this.setState({
+      user: e.target.value
+    })
+  }
+
+  handlePasswordInput(e) {
+    this.setState({
+      password: e.target.value
+    })
+  }
+
+  handleLogin() {
+    if (this.props.loggedin) {
+
+    }
   }
 
   handleLogout() {
     if (this.props.loggedin) {
-      return <a className="nav-link"><button className="btn btn-primary btn-info" onClick={this.props.handleLogout}>Logout</button></a>
+      return <a className="nav-link"><button className="btn btn-primary btn-info" onClick={this.props.userLogout}>Logout</button></a>
     } else {
-      return <a className="nav-link" href="/login"><button className="btn btn-info">Login</button></a>
+      return (
+      <a className="nav-link">
+        <div className="font-black">
+          <button type="button" className="btn btn-info" data-toggle="modal" data-target="#loginModal">Login</button>
+          <div className="modal fade" id="loginModal" tabIndex="-1" role="dialog" aria-labelledby="loginModal">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Login</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                </div>
+                <div className="modal-body alert alert-dismissable">
+                  <form>
+                    <div className="form-group">
+                      <label className="form-control-label">Username</label>
+                      <input onChange={this.handleUserInput} type="text" className="form-control"/>
+                    </div>
+                    <div className="form-group">
+                      <label className="form-control-label">Password</label>
+                      <input onChange={this.handlePasswordInput} type="text" className="form-control"/>
+                    </div>
+                  </form>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-primary" onClick={this.userLogin} data-dismiss="modal">Login</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+      )
     }
   }
 
@@ -21,7 +89,7 @@ class TitleBar extends React.Component {
     const boardsToLinks = lodash.map(this.props.boards, function(board, id) {
       return (
         <div key={id}>
-          <a className="dropdown-item">{board.name}</a>
+          <a href={"/boards/" + id} className="dropdown-item">{board.name}</a>
         </div>
       )
     })

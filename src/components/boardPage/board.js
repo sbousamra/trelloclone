@@ -48,7 +48,7 @@ class Board extends React.Component {
 
       return (
         <div>
-          <TitleBar boards={this.props.boards} userSignup={this.props.userSignup} loggedin={this.props.loggedin} handleLogout={this.props.handleLogout}/>
+          <TitleBar boards={this.props.boards} userSignup={this.props.userSignup} userLogin={this.props.userLogin} loggedin={this.props.loggedin} userLogout={this.props.userLogout}/>
           <div className="container-fluid board-col">
             <div className="row">
             {lists}
