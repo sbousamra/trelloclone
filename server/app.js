@@ -106,7 +106,7 @@ app.post('/signup', (req, res) => {
 app.post('/login', (req, res) => {
   var token = randId()
   if (verifyUser(req.body.username, req.body.password)) {
-    res.status(200).cookie("token", token).end()
+    res.status(200).cookie("token", token).json(users[req.body.username].boards)
     storeToken(req.body.username, token)
   } else {
     res.status(401).send("You need to log in!")

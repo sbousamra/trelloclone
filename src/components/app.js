@@ -70,6 +70,7 @@ class App extends React.Component {
   userLogin(userAndPass) {
     axios.post('/login', userAndPass).then((res) => {
       this.setState({
+        loggedin: true,
         boards: res.data
       })
     }).catch((error) => {
@@ -78,7 +79,12 @@ class App extends React.Component {
   }
 
   userLogout() {
-    axios.get('/logout').then()
+    axios.get('/logout').then((res) => {
+      this.setState({
+        loggedin: false,
+        boards: {}
+      })
+    })
   }
 
   handleDelete(e, id) {
