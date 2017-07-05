@@ -102,7 +102,7 @@ app.post('/login', (req, res) => {
     res.status(200).cookie("token", token).json(users[req.body.username].boards)
     storeToken(req.body.username, token)
   } else {
-    res.status(401).send("You need to log in!")
+    res.status(409).send("You need to log in!")
   }
 })
 

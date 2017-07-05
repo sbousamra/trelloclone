@@ -22,7 +22,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.state)
     axios.get('/boards').then((res) => {
       this.setState({
         boards: res.data,
@@ -98,11 +97,7 @@ class App extends React.Component {
       <Router>
         <div>
           <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>}/>
-          <Route path="/boards/:boardId" component={(props) => 
-            this.state.loggedin
-            ? <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>
-            : <Redirect to="/"/>
-          }/>
+          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>}/>
         </div>
       </Router>
     )

@@ -57,12 +57,12 @@ class TitleBar extends React.Component {
     return (
       <a className="nav-link">
         <div className="font-black">
-          <button type="button" className="btn btn-info" data-toggle="modal" data-target="#signupModal">Signup</button>
+          <button type="button" className="btn btn-info" data-toggle="modal" data-target="#signupModal">Sign Up</button>
           <div className="modal fade" id="signupModal" tabIndex="-1" role="dialog" aria-labelledby="signupModal">
             <div className="modal-dialog" role="document">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Signup</h5>
+                  <h5 className="modal-title">Sign Up</h5>
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">&times;</button>
                 </div>
                 <div className="modal-body alert alert-dismissable">
@@ -78,7 +78,7 @@ class TitleBar extends React.Component {
                   </form>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-primary" onClick={this.userSignup} data-dismiss="modal">Signup</button>
+                  <button type="button" className="btn btn-primary" onClick={this.userSignup} data-dismiss="modal">Sign Up</button>
                 </div>
               </div>
             </div>
@@ -90,17 +90,17 @@ class TitleBar extends React.Component {
 
   handleLogout() {
     if (this.props.loggedin) {
-      return <a className="nav-link"><button className="btn btn-primary btn-info" onClick={this.props.userLogout}>Logout</button></a>
+      return <a className="nav-link"><button className="btn btn-primary btn-info" onClick={this.props.userLogout}>Log Out</button></a>
     } else {
       return (
       <a className="nav-link">
         <div className="font-black">
-          <button type="button" className="btn btn-info" data-toggle="modal" data-target="#loginModal">Login</button>
+          <button type="button" className="btn btn-info" data-toggle="modal" data-target="#loginModal">Log In</button>
           <div className="modal fade" id="loginModal" tabIndex="-1" role="dialog" aria-labelledby="loginModal">
             <div className="modal-dialog" role="document">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Login</h5>
+                  <h5 className="modal-title">Log In</h5>
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">&times;</button>
                 </div>
                 <div className="modal-body alert alert-dismissable">
@@ -116,7 +116,7 @@ class TitleBar extends React.Component {
                   </form>
                 </div>
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-primary" onClick={this.userLogin} data-dismiss="modal">Login</button>
+                  <button type="button" className="btn btn-primary" onClick={this.userLogin} data-dismiss="modal">Log In</button>
                 </div>
               </div>
             </div>
@@ -147,36 +147,62 @@ class TitleBar extends React.Component {
         </div>
       </div>
 
-    return (
-      <div className="container-fluid bg-primary">
-        <nav className="navbar navbar-toggleable-md navbar-inverse bg-primary">
-        <div className="col-1">
-          {boardsDropdown}
-        </div>
-        <div className="col-4">
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <form className="form-inline my-2 my-lg-0">
-              <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
-              <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-            </form>
+    if (this.props.loggedin) {
+      return (
+        <div className="container-fluid bg-primary">
+          <nav className="navbar navbar-toggleable-md navbar-inverse bg-primary">
+          <div className="col-1">
+            {boardsDropdown}
           </div>
-        </div>
           <div className="col-4">
-            <a href="/">
-              <img src="https://a.trellocdn.com/images/01ef898811a879595cea8ac3cd77a155/header-logo-2x.png" className="img-fluid" alt="Responsive"/>
-            </a>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <form className="form-inline my-2 my-lg-0">
+                <input className="form-control mr-sm-2" type="text" placeholder="Search"/>
+                <button className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
           </div>
-          <div className="col-md-auto">
-            <ul className="navbar-nav">
-              <a className="nav-link col-4"></a>
-              <a className="nav-link" href="#"><button className="btn btn-info">+</button></a>
-              {this.handleSignup()}
-              {this.handleLogout()}
-            </ul>
+            <div className="col-4">
+              <a href="/">
+                <img src="https://a.trellocdn.com/images/01ef898811a879595cea8ac3cd77a155/header-logo-2x.png" className="img-fluid" alt="Responsive"/>
+              </a>
+            </div>
+            <div className="col-md-auto">
+              <ul className="navbar-nav">
+                <a className="nav-link col-4"></a>
+                <a className="nav-link" href="#"><button className="btn btn-info">+</button></a>
+                {this.handleSignup()}
+                {this.handleLogout()}
+              </ul>
+            </div>
+          </nav>
+        </div>
+      )
+    } else {
+      return (
+        <div className="container-fluid bg-primary">
+          <nav className="navbar navbar-toggleable-md navbar-inverse bg-primary">
+          <div className="col-5">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            </div>
           </div>
-        </nav>
-      </div>
-    );
+            <div className="col-4">
+              <a href="/">
+                <img src="https://a.trellocdn.com/images/01ef898811a879595cea8ac3cd77a155/header-logo-2x.png" className="img-fluid" alt="Responsive"/>
+              </a>
+            </div>
+            <div className="col-md-auto">
+              <ul className="navbar-nav">
+                <a className="nav-link col-4"></a>
+                <a className="nav-link" href="#"><button className="btn btn-info">+</button></a>
+                {this.handleSignup()}
+                {this.handleLogout()}
+              </ul>
+            </div>
+          </nav>
+        </div>
+      )
+    }
   }
 }
 

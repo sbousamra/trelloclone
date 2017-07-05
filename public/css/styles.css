@@ -41,6 +41,12 @@
   border-radius: 6px;
 }
 
+ .boardpage-bgcolor {
+  max-height: 100%;
+  max-width: 100%;
+  background-size: cover;
+}
+
 .boardpage-cardbgcolor {
   background-color: lavender;
 }
@@ -61,4 +67,8 @@
 
 .font-black {
   color: black;
+}
+
+.home-textcolor {
+  color: #0079bf;
 }
