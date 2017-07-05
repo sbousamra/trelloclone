@@ -1,7 +1,6 @@
 import React from 'react';
 import Home from './homePage/home';
 import Board from './boardPage/board';
-import Signup from './signupPage/signup';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
@@ -98,9 +97,7 @@ class App extends React.Component {
       <Router>
         <div>
           <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>}/>
-          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>
-          }/>
-          <Route path="/signup" component={(props) => <Signup {...props} userSignup={this.userSignup}/>}/>
+          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>}/>
         </div>
       </Router>
     )

@@ -9,15 +9,29 @@ class TitleBar extends React.Component {
       username: "",
       password: ""
     }
+    this.userSignup = this.userSignup.bind(this)
     this.userLogin = this.userLogin.bind(this)
     this.handleUserInput = this.handleUserInput.bind(this)
     this.handlePasswordInput = this.handlePasswordInput.bind(this)
+    this.handleSignup = this.handleSignup.bind(this)
     this.handleLogout = this.handleLogout.bind(this)
   } 
 
+  userSignup() {
+    const newUser = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    this.props.userSignup(newUser)
+    this.setState({
+      username: "",
+      password: ""
+    })
+  }
+
   userLogin() {
     const existingUser = {
-      username: this.state.user,
+      username: this.state.username,
       password: this.state.password
     }
     this.props.userLogin(existingUser)
@@ -29,7 +43,7 @@ class TitleBar extends React.Component {
 
   handleUserInput(e) {
     this.setState({
-      user: e.target.value
+      username: e.target.value
     })
   }
 
@@ -39,10 +53,39 @@ class TitleBar extends React.Component {
     })
   }
 
-  handleLogin() {
-    if (this.props.loggedin) {
-
-    }
+  handleSignup() {
+    return (
+      <a className="nav-link">
+        <div className="font-black">
+          <button type="button" className="btn btn-info" data-toggle="modal" data-target="#signupModal">Signup</button>
+          <div className="modal fade" id="signupModal" tabIndex="-1" role="dialog" aria-labelledby="signupModal">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title">Signup</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                </div>
+                <div className="modal-body alert alert-dismissable">
+                  <form>
+                    <div className="form-group">
+                      <label className="form-control-label">Username</label>
+                      <input onChange={this.handleUserInput} type="text" className="form-control"/>
+                    </div>
+                    <div className="form-group">
+                      <label className="form-control-label">Password</label>
+                      <input onChange={this.handlePasswordInput} type="password" className="form-control"/>
+                    </div>
+                  </form>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-primary" onClick={this.userSignup} data-dismiss="modal">Signup</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    )
   }
 
   handleLogout() {
@@ -127,7 +170,7 @@ class TitleBar extends React.Component {
             <ul className="navbar-nav">
               <a className="nav-link col-4"></a>
               <a className="nav-link" href="#"><button className="btn btn-info">+</button></a>
-              <a className="nav-link" href="/signup"><button className="btn btn-info">Sign Up</button></a>
+              {this.handleSignup()}
               {this.handleLogout()}
             </ul>
           </div>
