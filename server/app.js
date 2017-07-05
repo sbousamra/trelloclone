@@ -39,8 +39,13 @@ function storeToken(username, token) {
   lodash.extend(users.tokens, {[token]: username})
 }
 
-function isAuthenticated(req, res) {
-  return (!lodash.isEmpty(users.tokens) && users.tokens.hasOwnProperty(req.cookies.token))
+function authenticate(req, res, next) {
+  if (!lodash.isEmpty(users.tokens) && users.tokens.hasOwnProperty(req.cookies.token)) {
+    req.boards = users[users.tokens[req.cookies.token]].boards
+    return next()
+  } else {
+    return res.status(401).send("Make an account or log in!")
+  }
 }
 
 function saveBoard(boards, board) {
@@ -59,43 +64,27 @@ app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html')); 
 });
 
-app.get('/boards', (req, res) => {
-  if (isAuthenticated(req, res)) {
-    return res.status(200).json(users[users.tokens[req.cookies.token]].boards)
-  } else {
-    return res.status(401).send("Make an account or log in!")
-  }
+app.get('/boards', authenticate, (req, res) => {
+  return res.status(200).json(req.boards)
 })
 
-app.post('/boards', (req, res) => {
-  if (isAuthenticated(req, res)) {
-    saveBoard(users[users.tokens[req.cookies.token]].boards, req.body)
-    res.status(200).json(users[users.tokens[req.cookies.token]].boards)
-  } else {
-    res.status(401).send("Make an account or log in!")
-  }
+app.post('/boards', authenticate, (req, res) => {
+  saveBoard(req.boards, req.body)
+  return res.status(200).json(req.boards)
 })
 
 app.get('/boards/:boardId', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
 })
 
-app.post('/boards/:boardId/lists', (req, res) => {
-  if (isAuthenticated(req, res)) {
-    saveList(users[users.tokens[req.cookies.token]].boards[req.params.boardId].lists, req.body)
-    res.status(200).json(users[users.tokens[req.cookies.token]].boards)
-  } else {
-    res.status(401).send("Make an account or log in!")
-  }
+app.post('/boards/:boardId/lists', authenticate, (req, res) => {
+  saveList(req.boards[req.params.boardId].lists, req.body)
+  return res.status(200).json(req.boards)
 })
 
-app.post('/boards/:boardId/lists/:listId/cards', (req, res) => {
-  if (isAuthenticated(req, res)) {
-    saveCard(users[users.tokens[req.cookies.token]].boards[req.params.boardId].lists[req.params.listId].cards, req.body)
-    res.status(200).json(users[users.tokens[req.cookies.token]].boards)
-  } else {
-    res.status(401).send("Make an account or log in!")
-  }
+app.post('/boards/:boardId/lists/:listId/cards', authenticate, (req, res) => {
+  saveCard(req.boards[req.params.boardId].lists[req.params.listId].cards, req.body)
+  return res.status(200).json(req.boards)
 })
 
 app.post('/signup', (req, res) => {

@@ -68,7 +68,7 @@ class TitleBar extends React.Component {
                     </div>
                     <div className="form-group">
                       <label className="form-control-label">Password</label>
-                      <input onChange={this.handlePasswordInput} type="text" className="form-control"/>
+                      <input onChange={this.handlePasswordInput} type="password" className="form-control"/>
                     </div>
                   </form>
                 </div>
