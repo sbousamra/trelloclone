@@ -15,9 +15,9 @@ function randId() {
   return Math.random().toString(36).substr(2, 10);
 }
 
-function addUser(user, password) {
+function addUser(username, password) {
   lodash.extend(users, {
-    [user]: {
+    [username]: {
       password: password,
       boards: {
         tutorialBoard: {
@@ -88,8 +88,12 @@ app.post('/boards/:boardId/lists/:listId/cards', authenticate, (req, res) => {
 })
 
 app.post('/signup', (req, res) => {
-  addUser(req.body.username, req.body.password)
-  res.status(200).send("Welcome to Bass's Trello!")
+  if (users.hasOwnProperty(req.body.username)) {
+    res.status(401).send("That username already exists, please choose another!")
+  } else {
+    addUser(req.body.username, req.body.password)
+    res.status(200).send("Welcome to Bass's Trello!")
+  }
 })
 
 app.post('/login', (req, res) => {
