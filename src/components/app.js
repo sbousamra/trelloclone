@@ -90,6 +90,7 @@ class App extends React.Component {
   }
 
   handleDelete(id) {
+    console.log("IN HANDLE DELETE")
     this.setState({boards: delete this.state.boards[id]})
   }
 
@@ -97,7 +98,18 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>} handleDelete={this.handleDelete}/>
+          <Route exact path="/" component={(props) => 
+            <Home 
+              {...props} 
+              boards={this.state.boards}
+              addBoard={this.addBoard}
+              userSignup={this.userSignup}
+              userLogin={this.userLogin}
+              loggedin={this.state.loggedin}
+              userLogout={this.userLogout}
+              handleDelete={this.handleDelete}
+            />}
+          />
           <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>} handleDelete={this.handleDelete}/>
         </div>
       </Router>
