@@ -1,6 +1,8 @@
 import React from 'react';
-import TitleBar from '../titleBar'
-import BoardNameList from './boardNameList';
+import classNames from 'classnames';
+import * as lodash from 'lodash';
+import TitleBar from '../titleBar';
+import CreateBoard from './createBoard';
 
 class Home extends React.Component {
 
@@ -53,12 +55,41 @@ class Home extends React.Component {
   }
 
   render() {
+
+    const mappedBoards = lodash.map(this.props.boards, (board, id) => {
+
+      const buttonClassNames = classNames({
+        "btn": true,
+        "btn-lg": true,
+        "btn-primary": true,
+        "btn-block": true,
+        "btn-board": true,
+        "btn-info": board.important
+      })
+
+      return (
+        <div key={id} className="col-3 board-col">
+        <span className="fa fa-remove fa-pull-topright" onClick={() => this.props.handleDelete()}></span>
+          <a className="link-nounderline" href={"/boards/" + id}>
+            <button type="button" className={buttonClassNames}>
+              {board.name}
+            </button>
+          </a>
+        </div>
+      )
+    })
+
     if (this.props.loggedin) {
       return (
         <div>
           <TitleBar boards={this.props.boards} userSignup={this.props.userSignup} userLogin={this.props.userLogin} loggedin={this.props.loggedin} userLogout={this.props.userLogout}/>
           <div className="container-fluid">
-            <BoardNameList boards={this.props.boards} addBoard={this.props.addBoard}/>
+            <div className="row">
+              {mappedBoards}
+              <div className="col-3 board-col">
+                <CreateBoard addBoard={this.props.addBoard}/>
+              </div>
+            </div>
           </div>
         </div>
       )

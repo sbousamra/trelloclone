@@ -72,3 +72,9 @@
 .home-textcolor {
   color: #0079bf;
 }
+
+.fa-pull-topright {
+  position: absolute;
+  top: 5%;
+  right: 7%;
+}

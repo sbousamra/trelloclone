@@ -103,7 +103,7 @@ class TitleBar extends React.Component {
                   <h5 className="modal-title">Log In</h5>
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">&times;</button>
                 </div>
-                <div className="modal-body alert alert-dismissable">
+                <div className="modal-body">
                   <form>
                     <div className="form-group">
                       <label className="form-control-label">Username</label>
