@@ -69,12 +69,16 @@
   color: black;
 }
 
+.font-white {
+  color: white;
+}
+
 .home-textcolor {
   color: #0079bf;
 }
 
 .fa-pull-topright {
   position: absolute;
-  top: 5%;
+  top: 4%;
   right: 7%;
 }

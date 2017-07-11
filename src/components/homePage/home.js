@@ -69,7 +69,9 @@ class Home extends React.Component {
 
       return (
         <div key={id} className="col-3 board-col">
-        <span className="fa fa-remove fa-pull-topright" onClick={() => this.props.handleDelete()}></span>
+        <button type="button" className="close fa-pull-topright font-white" onClick={() => this.props.handleDelete(id)}>
+          <span aria-hidden="true">&times;</span>
+        </button>
           <a className="link-nounderline" href={"/boards/" + id}>
             <button type="button" className={buttonClassNames}>
               {board.name}

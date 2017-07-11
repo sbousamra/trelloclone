@@ -1,4 +1,5 @@
 import React from 'react';
+import * as lodash from 'lodash';
 import Home from './homePage/home';
 import Board from './boardPage/board';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
@@ -89,16 +90,46 @@ class App extends React.Component {
     })
   }
 
-  handleDelete(id) {
-    this.setState({boards: delete this.state.boards[id]})
+  handleDelete(boardId) {
+    axios.delete('/boards/' + boardId).then((res) => {
+      console.log(res.data)
+      this.setState({
+        boards: res.data
+      })
+    }).catch((error) => {
+      console.log(error)
+    })
   }
 
   render() {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={(props) => <Home {...props} boards={this.state.boards} addBoard={this.addBoard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>} handleDelete={this.handleDelete}/>
-          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>} handleDelete={this.handleDelete}/>
+          <Route exact path="/" component={(props) => 
+            <Home 
+              {...props} 
+              boards={this.state.boards} 
+              addBoard={this.addBoard} 
+              userSignup={this.userSignup} 
+              userLogin={this.userLogin} 
+              loggedin={this.state.loggedin} 
+              userLogout={this.userLogout}
+              handleDelete={this.handleDelete}
+            />}
+          />
+          <Route path="/boards/:boardId" component={(props) => 
+            <Board 
+              {...props} 
+              boards={this.state.boards} 
+              addList={this.addList} 
+              addCard={this.addCard} 
+              userSignup={this.userSignup} 
+              userLogin={this.userLogin} 
+              loggedin={this.state.loggedin} 
+              userLogout={this.userLogout} 
+              handleDelete={this.handleDelete}
+            />}
+          />
         </div>
       </Router>
     )

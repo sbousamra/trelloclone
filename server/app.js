@@ -52,6 +52,12 @@ function saveBoard(boards, board) {
   lodash.extend(boards, {[randId()]: board})
 }
 
+function deleteBoard(boards, boardId) {
+  updatedBoards = delete boards[boardId]
+  lodash.set(boards, updatedBoards)
+  console.log(updatedBoards)
+}
+
 function saveList(lists, list) {
   lodash.extend(lists, {[randId()]: list})
 }
@@ -108,6 +114,11 @@ app.post('/login', (req, res) => {
 
 app.get('/logout', (req,res) => {
   res.status(200).cookie("token", "deleting", {expires: new Date(0)}).end()
+})
+
+app.delete('/boards/:boardId', authenticate, (req, res) => {
+  deleteBoard(req.boards, req.params.boardId)
+  return res.status(200).json(req.boards)
 })
 
 var PORT = process.env.PORT || 9000;
