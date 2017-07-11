@@ -72,7 +72,7 @@ class Home extends React.Component {
           <button type="button" className="close fa-pull-topright font-white" onClick={() => this.props.handleDelete(id)}>
             <span>&times;</span>
           </button>
-        <span className="fa fa-remove fa-pull-topright" onClick={this.props.handleDelete}></span>
+        <span className="fa fa-pull-topright" onClick={this.props.handleDelete}></span>
           <a className="link-nounderline" href={"/boards/" + id}>
             <button type="button" className={buttonClassNames}>
               <div className="text-break">
