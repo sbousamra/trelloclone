@@ -59,3 +59,17 @@ This project was separated into many parts, but essentially there is a client si
       * If the username/password don't match correctly, we will return a 401 response, saying they are unauthorized and must try again.
 
   4. When the user is logged in, they have access to the creating of boards, accessing that board to create a list and any cards to do with that list. They can change between boards via a dropdown list at the top. At any point they can log in and out and make changes while logged in so long as the token sent by the server is still stored in the client's cookies.
+
+##### Things I still want to do
+
+* Delete buttons on the board page for lists and cards.
+
+* Dragging and dropping of buttons between lists.
+
+* Allowing multiple users to share boards so that they can work on it together.
+
+* Fix search button to have a user look up information (possibly connected to a search engine api that filters for trello related information) and also public boards to do with the searched topic.
+
+##### Bugs
+
+* When logged in, but going back to home page, it renders the component for when "isloggedin" state is set to false, until the http response comes through for being authorized, in which "isloggedin" is then set to true in the promise and the other component is then rendered. There is a delay and the user shouldn't see anything but the loggedin state if they are loggedin.
