@@ -1,8 +1,7 @@
 import React from 'react';
-import * as lodash from 'lodash';
 import Home from './homePage/home';
 import Board from './boardPage/board';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import axios from 'axios';
 
 class App extends React.Component {
