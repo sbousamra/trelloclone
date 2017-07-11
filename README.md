@@ -4,9 +4,15 @@ Web application project to clone trello.com with client side written in React an
 
 ## Goals
 
-###### This project's main goal is to learn how to code a web app. 
+This project's main goal is to learn how to code a web app as well as improve general understanding of HTTP protocol and web application design. 
 
   * Learn the React approach for client side rendering.
+
+  * Building a website using the single page app approach.
+
+  * Authentication of the client through use of tokens stored in cookies.
+
+  * Storing of data using plain old variables (no database or SQL used)
 
   * Learn Express to handle server side.
 
