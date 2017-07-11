@@ -55,7 +55,6 @@ function saveBoard(boards, board) {
 function deleteBoard(boards, boardId) {
   updatedBoards = delete boards[boardId]
   lodash.set(boards, updatedBoards)
-  console.log(updatedBoards)
 }
 
 function saveList(lists, list) {

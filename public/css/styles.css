@@ -82,3 +82,7 @@
   top: 4%;
   right: 7%;
 }
+
+.text-break {
+  white-space: normal;
+}
