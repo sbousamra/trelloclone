@@ -56,6 +56,6 @@ This project was separated into many parts, but essentially there is a client si
 
       * If the username/password match correctly, we will return a 200 response, and we will send the user a token generated via a random number generator. This token will be stored in the users cookies. This allows the user to move between pages and not be logged out. Every time the POSTing of a board/list/card or even on GET requesting on every re-render via componentDidMount is done, the authenticate method in the server file is passed in as middleware to match the cookie on the client with the server (aka. To verify they are authorized to make requests)
 
-      * If the username/password don't match correctly, we will return a 401 response, saying they are not authorized.
+      * If the username/password don't match correctly, we will return a 409 response, saying there is a conflict.
 
   4. When the user is logged in, they have access to the creating of boards, accessing that board to create a list and any cards to do with that list. They can change between boards via a dropdown list at the top. At any point they can log in and out and make changes while logged in so long as the token sent by the server is still stored in the client's cookies.
