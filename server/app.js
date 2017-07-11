@@ -94,7 +94,7 @@ app.post('/boards/:boardId/lists/:listId/cards', authenticate, (req, res) => {
 
 app.post('/signup', (req, res) => {
   if (users.hasOwnProperty(req.body.username)) {
-    res.status(401).send("That username already exists, please choose another!")
+    res.status(409).send("That username already exists, please choose another!")
   } else {
     addUser(req.body.username, req.body.password)
     res.status(200).send("Welcome to Bass's Trello!")
