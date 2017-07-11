@@ -90,6 +90,7 @@ class App extends React.Component {
     })
   }
 
+<<<<<<< HEAD
   handleDelete(boardId) {
     axios.delete('/boards/' + boardId).then((res) => {
       console.log(res.data)
@@ -99,6 +100,11 @@ class App extends React.Component {
     }).catch((error) => {
       console.log(error)
     })
+=======
+  handleDelete(id) {
+    console.log("IN HANDLE DELETE")
+    this.setState({boards: delete this.state.boards[id]})
+>>>>>>> f38f20081f20f2d883ffc7851df32af40068ab68
   }
 
   render() {
@@ -108,15 +114,24 @@ class App extends React.Component {
           <Route exact path="/" component={(props) => 
             <Home 
               {...props} 
+<<<<<<< HEAD
               boards={this.state.boards} 
               addBoard={this.addBoard} 
               userSignup={this.userSignup} 
               userLogin={this.userLogin} 
               loggedin={this.state.loggedin} 
+=======
+              boards={this.state.boards}
+              addBoard={this.addBoard}
+              userSignup={this.userSignup}
+              userLogin={this.userLogin}
+              loggedin={this.state.loggedin}
+>>>>>>> f38f20081f20f2d883ffc7851df32af40068ab68
               userLogout={this.userLogout}
               handleDelete={this.handleDelete}
             />}
           />
+<<<<<<< HEAD
           <Route path="/boards/:boardId" component={(props) => 
             <Board 
               {...props} 
@@ -130,6 +145,9 @@ class App extends React.Component {
               handleDelete={this.handleDelete}
             />}
           />
+=======
+          <Route path="/boards/:boardId" component={(props) => <Board {...props} boards={this.state.boards} addList={this.addList} addCard={this.addCard} userSignup={this.userSignup} userLogin={this.userLogin} loggedin={this.state.loggedin} userLogout={this.userLogout}/>} handleDelete={this.handleDelete}/>
+>>>>>>> f38f20081f20f2d883ffc7851df32af40068ab68
         </div>
       </Router>
     )
