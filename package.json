@@ -22,7 +22,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "start": "node server/app.js",
-    "build": "npm run build",
+    "build": "react-scripts start",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
