@@ -6,4 +6,4 @@ cache:
   directories:
     - node_modules
 script:
-  - webpack build
+  - npm run build
